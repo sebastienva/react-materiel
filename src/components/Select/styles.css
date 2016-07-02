@@ -1,0 +1,34 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+.dropdown-content.active {
+  display: block;
+  opacity: 1;
+  top: 0px;
+  width: 100%;
+  animation: fadeIn 0.3s;
+}
+
+.select-dropdown {
+  max-height: 250px;
+  overflow: auto !important;
+}
+
+.select-wrapper label {
+  left: 0px;
+}
+
+.input-field input {
+    transition: none;
+  }
+
+.select-wrapper input.active {
+    border-width: 2px;
+}
+
+span.caret i {
+  transform: rotate(90deg);
+  margin-top: -10px;
+}

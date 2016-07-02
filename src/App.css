@@ -1,0 +1,38 @@
+html {
+  font-size: 16px;
+}
+
+body.modal-open {
+    position: static;
+    height: auto;
+    overflow: hidden;
+}
+
+input {
+  height: 2rem !important;
+  line-height: 2rem !important;
+}
+
+label:after {
+  margin-top: -10px;
+}
+main {
+  padding-left: 240px;
+  padding-top: 50px;
+}
+
+.input-field {
+  margin-bottom: 10px;
+}
+
+.input-field .label-field {
+  color: #000;
+  top: 0.4rem;
+}
+
+.test1 {
+  position: relative;
+  border: 1px solid;
+  height: 200px;
+  overflow-y: scroll;
+}
