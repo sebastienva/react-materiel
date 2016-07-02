@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "coming",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --colors --display-error-details --display-cached --port 3000",
-    "buil": "webpack",
+    "start": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
+    "build": "webpack",
     "lint": "eslint src"
   },
   "repository": {

@@ -15,8 +15,8 @@ export default class App extends Component {
         <header>
           <ul id="nav-mobile" className="side-nav fixed" style={{ transform: 'translateX(0%)' }}>
             <li className="bold"><Link to="home" activeClassName="active">Home</Link></li>
-            <li className="bold" activeClassName="active"><Link to="input">Input</Link></li>
-            <li className="bold" activeClassName="active"><Link to="select">Select</Link></li>
+            <li className="bold"><Link to="input" activeClassName="active">Input</Link></li>
+            <li className="bold"><Link to="select" activeClassName="active">Select</Link></li>
           </ul>
         </header>
         <main>
