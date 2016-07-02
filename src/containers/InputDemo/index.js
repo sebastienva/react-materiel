@@ -12,13 +12,15 @@ class InputDemo extends Component {
       firstName: '',
       lastName: '',
       email: 'test',
+      disable: "I'm disabled",
     };
   }
 
   state: {
     firstName: string,
     lastName: string,
-    email: string
+    email: string,
+    disable: string
   };
 
   handleFirstName(e: any) {
@@ -31,6 +33,10 @@ class InputDemo extends Component {
 
   handleEmail(e: any) {
     this.setState({ email: e.target.value });
+  }
+
+  handleDisable(e: any) {
+    this.setState({ disable: e.target.value });
   }
 
   render() {
@@ -50,6 +56,12 @@ class InputDemo extends Component {
         <div className="row">
           <div className="input-field col s6">
             <Input value={this.state.email} float type="email" label="E-mail" error="error" onChange={this.handleEmail.bind(this)} />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field col s6">
+            <Input value={this.state.disable} float type="email" label="Disabled" disabled onChange={this.handleDisable.bind(this)} />
           </div>
         </div>
 

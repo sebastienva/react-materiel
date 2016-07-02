@@ -39,7 +39,7 @@ class Input extends Component {
     // keep label active if there an error, the error is :after it
     if (this.props.value === '' && this.props.error === '') {
       this.setState({
-        active: false
+        active: false,
       });
     }
   }
@@ -51,7 +51,6 @@ class Input extends Component {
   render() {
     const labelClasses = classNames({ active: this.state.active, 'label-field': true });
     const inputClasses = classNames({ 'validate invalid': this.props.error !== '' });
-
     let label = '';
     let placeholder = '';
     if (this.props.float) {
@@ -60,9 +59,12 @@ class Input extends Component {
       placeholder = this.props.label;
     }
 
+
+
     return (
       <span onClick={this.handleClick.bind(this)}>
         <input
+          value={this.props.value} onChange={this.props.onChange} disabled={this.props.disabled}
           className={inputClasses} placeholder={placeholder}
           onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)} ref={(ref) => this.input = ref}
         />
