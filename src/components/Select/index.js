@@ -39,21 +39,31 @@ class Select extends Component {
   }
 
   optionSelected(val) {
-    const currentVal = this.props.value;
+    let currentVal = this.props.value;
 
-    const index: number = currentVal.indexOf(val);
+    if (this.props.multiple) {
+      const index: number = currentVal.indexOf(val);
 
-    if (index === -1) {
-      currentVal.push(val);
+      if (index === -1) {
+        currentVal.push(val);
+      } else {
+        currentVal.splice(index, 1);
+      }
     } else {
-      currentVal.splice(index, 1);
+      this.setState({ active: false });
+      currentVal = val;
     }
+
     // trigger change
     this.props.onChange(currentVal);
   }
 
   isValueSelected(val) {
-    return this.props.value.indexOf(val) !== -1;
+    if (this.props.multiple) {
+      return this.props.value.indexOf(val) !== -1;
+    } else {
+      return this.props.value === val;
+    }
   }
 
   addOption(element, options, preview) {
@@ -84,7 +94,7 @@ class Select extends Component {
       active: this.state.active,
     });
     const labelClasses: string = classNames({
-      active: this.props.value.length,
+      active: this.props.multiple ? this.props.value.length : this.props.value != null,
       'label-field': true,
     });
 

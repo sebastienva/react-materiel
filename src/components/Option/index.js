@@ -1,5 +1,6 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import classNames from 'classnames';
 
 class Option extends Component {
 
@@ -16,6 +17,11 @@ class Option extends Component {
   };
 
   render() {
+    const optionClasses: string = classNames({
+      'active selected': this.props.active,
+      'optgroup-option': true,
+    });
+
     let option = '';
 
     if (this.props.multiple) {
@@ -30,7 +36,7 @@ class Option extends Component {
     }
 
     return (
-      <li onClick={this.props.onSelect} className="optgroup-option">
+      <li onClick={this.props.onSelect} className={optionClasses}>
         {option}
       </li>
     );
