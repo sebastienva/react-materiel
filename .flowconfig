@@ -1,0 +1,11 @@
+[options]
+module.name_mapper.extension='css' -> '<PROJECT_ROOT>/interfaces/css-module.js'
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+
+[include]
+./src/.*
+
+[ignore]
+./node_modules/.*
+node_modules/.*
