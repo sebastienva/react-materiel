@@ -8,6 +8,11 @@ body.modal-open {
   overflow: hidden;
 }
 
+main {
+  padding-left: 240px;
+  padding-top: 50px;
+}
+
 input {
   height: 2rem !important;
   line-height: 2rem !important;
@@ -15,11 +20,6 @@ input {
 
 label:after {
   margin-top: -10px;
-}
-
-main {
-  padding-left: 240px;
-  padding-top: 50px;
 }
 
 .input-field {

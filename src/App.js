@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import 'materialize-css/dist/css/materialize.css';
-
-// global styles
-import './App.css';
+import '../scss/main.scss';
 
 export default class App extends Component {
 

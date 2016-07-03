@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 
 import Option from '../Option';
-import './styles.css';
 
 class Select extends Component {
 
