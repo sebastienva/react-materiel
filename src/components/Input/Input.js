@@ -59,8 +59,6 @@ class Input extends Component {
       placeholder = this.props.label;
     }
 
-
-
     return (
       <span onClick={this.handleClick.bind(this)}>
         <input

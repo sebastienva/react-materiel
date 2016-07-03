@@ -1,2 +1,2 @@
-export Input from './Input';
+export Input from './Input/Input';
 export Select from './Select';
