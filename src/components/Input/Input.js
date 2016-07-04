@@ -10,18 +10,6 @@ class Input extends Component {
     value: '',
   };
 
-  constructor(props: any) {
-    super(props);
-
-    this.state = {
-      active: (this.props.value !== ''),
-    };
-  }
-
-  state: {
-    active: boolean
-  };
-
   props: {
     error: string,
     value: any,
@@ -29,7 +17,19 @@ class Input extends Component {
     float: boolean;
   };
 
+  state: {
+    active: boolean
+  };
+
   input: any;
+
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      active: (this.props.value !== ''),
+    };
+  }
 
   handleFocus() {
     this.setState({ active: true });
@@ -46,6 +46,8 @@ class Input extends Component {
 
   handleClick() {
     this.input.focus();
+    // focus event not triggered by tests (and possibly some browsers ?)
+    this.handleFocus();
   }
 
   render() {
