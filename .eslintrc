@@ -8,5 +8,6 @@
       allowArrowFunctions: true,
       allowBind: true,
     }],
+    "react/sort-comp": [0]
   }
 }
