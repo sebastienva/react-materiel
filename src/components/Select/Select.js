@@ -1,23 +1,11 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 
 import Option from '../Option';
 
 class Select extends Component {
-
-  constructor(props: Object) {
-    super(props);
-
-    this.state = {
-      active: false,
-    };
-  }
-
-  state: {
-    active: boolean
-  };
 
   props: {
     value: any,
@@ -26,6 +14,18 @@ class Select extends Component {
     children: any,
     label: string
   };
+
+  state: {
+    active: boolean
+  };
+
+  constructor(props: Object) {
+    super(props);
+
+    this.state = {
+      active: false,
+    };
+  }
 
   handleFocus() {
     document.body.classList.add('modal-open');
