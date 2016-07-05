@@ -5,6 +5,13 @@ import { Input } from '../../components';
 
 class InputDemo extends Component {
 
+  state: {
+    firstName: string,
+    lastName: string,
+    email: string,
+    disable: string
+  };
+
   constructor() {
     super();
 
@@ -16,27 +23,20 @@ class InputDemo extends Component {
     };
   }
 
-  state: {
-    firstName: string,
-    lastName: string,
-    email: string,
-    disable: string
-  };
-
-  handleFirstName(e: any) {
-    this.setState({ firstName: e.target.value });
+  handleFirstName(value: string) {
+    this.setState({ firstName: value });
   }
 
-  handleLastName(e: any) {
-    this.setState({ lastName: e.target.value });
+  handleLastName(value: string) {
+    this.setState({ lastName: value });
   }
 
-  handleEmail(e: any) {
-    this.setState({ email: e.target.value });
+  handleEmail(value: string) {
+    this.setState({ email: value });
   }
 
-  handleDisable(e: any) {
-    this.setState({ disable: e.target.value });
+  handleDisable(value: string) {
+    this.setState({ disable: value });
   }
 
   render() {
