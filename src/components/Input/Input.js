@@ -14,7 +14,8 @@ class Input extends Component {
     error: string,
     value: any,
     label: string,
-    float: boolean;
+    float: boolean,
+    onChange: () => void
   };
 
   state: {
@@ -23,7 +24,7 @@ class Input extends Component {
 
   input: any;
 
-  constructor(props: any) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {
@@ -42,6 +43,10 @@ class Input extends Component {
         active: false,
       });
     }
+  }
+
+  handleChange(e: any) {
+    if (this.props.onChange) this.props.onChange(e.target.value);
   }
 
   handleClick() {
@@ -64,8 +69,9 @@ class Input extends Component {
     return (
       <span onClick={this.handleClick.bind(this)}>
         <input
-          value={this.props.value} onChange={this.props.onChange} disabled={this.props.disabled}
+          value={this.props.value} disabled={this.props.disabled}
           className={inputClasses} placeholder={placeholder}
+          onChange={this.handleChange.bind(this)}
           onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)} ref={(ref) => this.input = ref}
         />
         {label}
