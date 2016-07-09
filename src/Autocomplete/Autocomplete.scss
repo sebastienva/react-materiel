@@ -1,0 +1,26 @@
+.autocomplete {
+  .loader {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .preloader-wrapper  {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .dropdown-content.active {
+    top: 35px;
+  }
+
+  .close {
+    position: absolute;
+    margin-right: 5px;
+    right: 2px;
+    top: 0px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+}
