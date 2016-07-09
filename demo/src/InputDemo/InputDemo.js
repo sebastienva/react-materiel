@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-import { Input } from '../../components';
+import { Input } from '../../../src';
 
 class InputDemo extends Component {
 
@@ -64,7 +64,6 @@ class InputDemo extends Component {
             <Input value={this.state.disable} float type="email" label="Disabled" disabled onChange={this.handleDisable.bind(this)} />
           </div>
         </div>
-
       </div>
     );
   }

@@ -2,4 +2,5 @@ $roboto-font-path: "../node_modules/materialize-css/fonts/roboto/";
 @import "../node_modules/materialize-css/sass/materialize.scss";
 
 @import "global";
-@import "select";
+@import "../src/Select/Select";
+@import "../src/Autocomplete/Autocomplete";

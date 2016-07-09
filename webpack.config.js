@@ -32,7 +32,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/index'
+    './demo/src/index'
   ],
 
   plugins: [
@@ -45,7 +45,7 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src')
+        include: [path.join(__dirname, 'src'), path.join(__dirname, 'demo')]
       },
       {
         test:   /\.css$/,

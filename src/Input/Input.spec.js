@@ -41,7 +41,6 @@ describe('<Input/>', function () {
     expect(wrapper.find('input').prop('placeholder')).to.equal('bla');
   });
 
-
   it('should return value on onChange', (done) => {
     const wrapper = shallow(
       <Input

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 
-import Option from '../Option';
+import Option from '../Option/Option';
 
 class Select extends Component {
 
@@ -28,13 +28,13 @@ class Select extends Component {
   }
 
   handleFocus() {
-    document.body.classList.add('modal-open');
+    document.body.classList.add('modal-open'); // "lock" the screen
     this.setState({ active: true });
   }
 
   handleClickOutside() {
     this.setState({ active: false });
-    document.body.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');  // "unlock" the screen
   }
 
   optionSelected(val) {
@@ -52,7 +52,6 @@ class Select extends Component {
       this.setState({ active: false });
       currentVal = val;
     }
-
     // trigger change
     this.props.onChange(currentVal);
   }
@@ -115,7 +114,7 @@ class Select extends Component {
     // final render
     return (
       <div className="select-wrapper" onFocus={this.handleFocus.bind(this)}>
-        <span className="caret"><i className="material-icons">play_arrow</i></span>
+        <span className="caret">▼</span>
         <label className={labelClasses}>{this.props.label}</label>
         <input type="text" className={dropDownClasses} readOnly value={preview.join(', ')} />
         <ul className={dropDownContentClasses}>

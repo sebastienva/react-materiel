@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-import { Select } from '../../components';
+import { Select } from '../../../src';
 
 class SelectDemo extends Component {
 

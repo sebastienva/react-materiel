@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import '../scss/main.scss';
+import '../../scss/main.scss';
 
 export default class App extends Component {
 
@@ -14,6 +14,8 @@ export default class App extends Component {
             <li className="bold"><Link to="home" activeClassName="active">Home</Link></li>
             <li className="bold"><Link to="input" activeClassName="active">Input</Link></li>
             <li className="bold"><Link to="select" activeClassName="active">Select</Link></li>
+            <li className="bold"><Link to="autocomplete" activeClassName="active">Autocomplete</Link></li>
+
           </ul>
         </header>
         <main>
