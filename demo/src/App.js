@@ -15,12 +15,15 @@ export default class App extends Component {
             <li className="bold"><Link to="input" activeClassName="active">Input</Link></li>
             <li className="bold"><Link to="select" activeClassName="active">Select</Link></li>
             <li className="bold"><Link to="autocomplete" activeClassName="active">Autocomplete</Link></li>
-
           </ul>
         </header>
         <main>
           <div className="container">
             {this.props.children}
+          </div>
+
+          <div className="footer">
+            
           </div>
         </main>
       </div>
