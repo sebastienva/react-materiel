@@ -7,6 +7,7 @@ import Home from './Home/Home';
 import InputDemo from './InputDemo/InputDemo';
 import SelectDemo from './SelectDemo/SelectDemo';
 import AutocompleteDemo from './AutocompleteDemo/AutocompleteDemo';
+import PreloaderDemo from './PreloaderDemo/PreloaderDemo';
 
 render((
   <Router history={hashHistory}>
@@ -16,6 +17,7 @@ render((
       <Route path="/input" component={InputDemo} />
       <Route path="/select" component={SelectDemo} />
       <Route path="/autocomplete" component={AutocompleteDemo} />
+      <Route path="/preloader" component={PreloaderDemo} />
     </Route>
   </Router>
 ), document.getElementById('root'));
