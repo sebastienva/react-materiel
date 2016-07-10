@@ -5,22 +5,28 @@ import { Autocomplete } from '../../../src';
 class AutocompleteDemo extends Component {
 
   state: {
-    auto: any,
+    auto: string,
     options: Array<Object>,
     isLoading: boolean
   };
+
+  handleSearch: () => void;
+  handleAuto: () => void;
 
   constructor(props: any) {
     super(props);
 
     this.state = {
-      auto: null,
+      auto: '',
       options: [],
       isLoading: false,
     };
+
+    this.handleAuto = this.handleAuto.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleAuto(value: number[]) {
+  handleAuto(value: string) {
     this.setState({ auto: value });
   }
 
@@ -36,21 +42,20 @@ class AutocompleteDemo extends Component {
   }
 
   render() {
-    // final render
     return (
       <div>
-
+        <h3>Autocomplete</h3>
         <div className="row">
           <div className="input-field col s6">
             <Autocomplete
               value={this.state.auto} label="Autocomplete"
               isLoading={this.state.isLoading}
-              onChange={this.handleAuto.bind(this)}
-              onSearch={this.handleSearch.bind(this)}
+              onChange={this.handleAuto}
+              onSearch={this.handleSearch}
               strict
             >
               {this.state.options.map(option =>
-                (<option key={option.id} short={option.full_name}>
+                (<option key={option.id} value={option.id} preview={option.full_name}>
                   <img src={option.owner.avatar_url} alt="" />
                   <strong>{option.full_name}</strong><br />
                   <small>{option.description}</small>
@@ -59,7 +64,6 @@ class AutocompleteDemo extends Component {
             </Autocomplete>
           </div>
         </div>
-
       </div>
     );
   }

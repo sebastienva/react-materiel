@@ -2,19 +2,38 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
+type Props = {
+  children: any,
+  active: boolean,
+  onSelect: (value: any, preview: any) => void,
+  multiple: ?boolean,
+  value: any,
+  preview: ?string
+};
+
 class Option extends Component {
 
   static defaultProps = {
     active: false,
     children: null,
+    multiple: false,
+    preview: '',
+    value: null,
   }
 
-  props: {
-    children: any,
-    active: boolean,
-    onSelect: () => void,
-    multiple: boolean
-  };
+  props: Props;
+
+  handleSelect: () => void;
+
+  constructor(props: Object) {
+    super(props);
+
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect() {
+    this.props.onSelect(this.props.value, (this.props.preview || this.props.children));
+  }
 
   render() {
     const optionClasses: string = classNames({
@@ -36,7 +55,7 @@ class Option extends Component {
     }
 
     return (
-      <li onClick={this.props.onSelect} className={optionClasses}>
+      <li onClick={this.handleSelect} className={optionClasses}>
         {option}
       </li>
     );

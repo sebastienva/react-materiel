@@ -12,8 +12,13 @@ class InputDemo extends Component {
     disable: string
   };
 
-  constructor() {
-    super();
+  handleFirstName: () => void;
+  handleLastName: () => void;
+  handleEmail: () => void;
+  handleDisable: () => void;
+
+  constructor(props: any) {
+    super(props);
 
     this.state = {
       firstName: '',
@@ -21,6 +26,11 @@ class InputDemo extends Component {
       email: 'test',
       disable: "I'm disabled",
     };
+
+    this.handleFirstName = this.handleFirstName.bind(this);
+    this.handleLastName = this.handleLastName.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleDisable = this.handleDisable.bind(this);
   }
 
   handleFirstName(value: string) {
@@ -40,28 +50,27 @@ class InputDemo extends Component {
   }
 
   render() {
-    // final render
     return (
       <div>
         <div className="row">
           <div className="input-field col s6">
-            <Input value={this.state.firstName} float label="First name" onChange={this.handleFirstName.bind(this)} />
+            <Input value={this.state.firstName} float label="First name" onChange={this.handleFirstName} />
           </div>
 
           <div className="input-field col s6">
-            <Input value={this.state.lastName} label="Last name" onChange={this.handleLastName.bind(this)} />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="input-field col s6">
-            <Input value={this.state.email} float type="email" label="E-mail" error="error" onChange={this.handleEmail.bind(this)} />
+            <Input value={this.state.lastName} label="Last name" onChange={this.handleLastName} />
           </div>
         </div>
 
         <div className="row">
           <div className="input-field col s6">
-            <Input value={this.state.disable} float type="email" label="Disabled" disabled onChange={this.handleDisable.bind(this)} />
+            <Input value={this.state.email} float type="email" label="E-mail" error="error" onChange={this.handleEmail} />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field col s6">
+            <Input value={this.state.disable} float type="email" label="Disabled" disabled onChange={this.handleDisable} />
           </div>
         </div>
       </div>

@@ -16,6 +16,22 @@
   overflow: auto !important;
 }
 
+.select-preview {
+  position: absolute;
+  top: 5px;
+  height: 25px;
+  overflow: hidden;
+
+  .preview-item{
+    &:after {
+      content: ", ";
+    }
+    &:last-child:after {
+      content: "";
+    }
+  }
+}
+
 .select-wrapper label {
   left: 0px;
 }

@@ -19,12 +19,16 @@ class Select extends Component {
     active: boolean
   };
 
+  handleOptionSelected: () => void;
+
   constructor(props: Object) {
     super(props);
 
     this.state = {
       active: false,
     };
+
+    this.handleOptionSelected = this.handleOptionSelected.bind(this);
   }
 
   handleFocus() {
@@ -32,12 +36,18 @@ class Select extends Component {
     this.setState({ active: true });
   }
 
+  handleKeyDown(e) {
+    if (e.keyCode === 9) { // simulate lose of focus when tab is pressed
+      this.handleClickOutside();
+    }
+  }
+
   handleClickOutside() {
     this.setState({ active: false });
     document.body.classList.remove('modal-open');  // "unlock" the screen
   }
 
-  optionSelected(val) {
+  handleOptionSelected(val) {
     let currentVal = this.props.value;
 
     if (this.props.multiple) {
@@ -68,13 +78,20 @@ class Select extends Component {
     const optionActive = this.isValueSelected(element.props.value);
 
     if (optionActive) {
-      preview.push(element.props.children);
+      if (element.props.preview) {
+        preview.push(element.props.preview);
+      } else {
+        preview.push(element.props.children);
+      }
     }
 
     options.push(
       <Option
-        onSelect={this.optionSelected.bind(this, element.props.value)}
-        key={options.length} active={optionActive} multiple={this.props.multiple}
+        onSelect={this.handleOptionSelected}
+        key={options.length}
+        value={element.props.value}
+        active={optionActive}
+        multiple={this.props.multiple}
       >
         {element.props.children}
       </Option>
@@ -113,10 +130,15 @@ class Select extends Component {
 
     // final render
     return (
-      <div className="select-wrapper" onFocus={this.handleFocus.bind(this)}>
+      <div className="select-wrapper" onFocus={this.handleFocus.bind(this)} onKeyDown={this.handleKeyDown.bind(this)} >
         <span className="caret">▼</span>
         <label className={labelClasses}>{this.props.label}</label>
-        <input type="text" className={dropDownClasses} readOnly value={preview.join(', ')} />
+        <input type="text" className={dropDownClasses} readOnly value="" />
+        <span className="select-preview">
+          {preview.map((item) =>
+            <span key={item} className="preview-item">{item}</span>
+          )}
+        </span>
         <ul className={dropDownContentClasses}>
           {options}
         </ul>

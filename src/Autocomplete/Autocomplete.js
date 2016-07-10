@@ -47,6 +47,7 @@ class Autocomplete extends Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
+    this.handleOptionSelected = this.handleOptionSelected.bind(this);
   }
 
   handleSearch(value: string) {
@@ -77,7 +78,7 @@ class Autocomplete extends Component {
     document.body.classList.remove('modal-open');  // "unlock" the screen
   }
 
-  optionSelected(value: any, text: string) {
+  handleOptionSelected(value: any, text: string) {
     this.setState({ value, search: text });
     this.handleClickOutside();
   }
@@ -109,7 +110,12 @@ class Autocomplete extends Component {
     }
 
     let options = React.Children.map(this.props.children, (child) =>
-      <Option key={child.key} onSelect={this.optionSelected.bind(this, child.key, child.props.short)}>
+      <Option
+        key={child.key || options.length}
+        value={child.props.value}
+        onSelect={this.handleOptionSelected}
+        preview={child.props.preview}
+      >
         {child.props.children}
       </Option>
     );
