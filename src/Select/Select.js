@@ -33,29 +33,27 @@ class Select extends Component {
       active: false,
       hideAnimation: false,
     };
-
-    this.handleOptionSelected = this.handleOptionSelected.bind(this);
   }
 
-  handleFocus() {
+  handleFocus = () => {
     document.body.classList.add('modal-open'); // "lock" the screen
     this.setState({ active: true });
   }
 
-  handleKeyDown(e) {
+  handleKeyDown = (e) => {
     if (e.keyCode === 9) { // simulate lose of focus when tab is pressed
       this.handleClickOutside();
     }
   }
 
-  handleClickOutside() {
+  handleClickOutside = () => {
     if (this.state.active) {
       this.hideDropdown();
       document.body.classList.remove('modal-open');  // "unlock" the screen
     }
   }
 
-  handleOptionSelected(val) {
+  handleOptionSelected = (val) => {
     let currentVal = this.props.value;
 
     if (this.props.multiple) {
@@ -84,7 +82,7 @@ class Select extends Component {
 
   isValueSelected(val): boolean {
     let res: boolean;
-    if (this.props.multiple) {
+    if (this.props.multiple && this.props.value) {
       res = this.props.value.indexOf(val) !== -1;
     } else {
       res = this.props.value === val;

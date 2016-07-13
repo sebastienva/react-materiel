@@ -13,7 +13,7 @@ type Props = {
   label: string,
   strict: boolean,
   onSearch: () => void,
-};
+}
 
 type State = {
   active: boolean,
@@ -31,10 +31,6 @@ class Autocomplete extends Component {
   state: State;
   timeout: any;
 
-  handleSearch: () => void;
-  handleKeyDown: () => void;
-  handleFocus: () => void;
-
   constructor(props: Object) {
     super(props);
 
@@ -43,14 +39,9 @@ class Autocomplete extends Component {
       search: '',
       value: null,
     };
-
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleOptionSelected = this.handleOptionSelected.bind(this);
   }
 
-  handleSearch(value: string) {
+  handleSearch = (value: string) => {
     this.setState({ search: value });
 
     if (this.timeout) {
@@ -61,26 +52,26 @@ class Autocomplete extends Component {
     }, 300);
   }
 
-  handleKeyDown(e: any) {
+  handleKeyDown = (e: any) => {
     // clear value on backspace
     if (e.keyCode === 8 && this.state.value !== null) {
       this.clearValue();
     }
   }
 
-  handleFocus() {
+  handleFocus = () => {
     document.body.classList.add('modal-open'); // "lock" the screen
     this.setState({ active: true });
+  }
+
+  handleOptionSelected = (value: any, text: string) => {
+    this.setState({ value, search: text });
+    this.handleClickOutside();
   }
 
   handleClickOutside() {
     this.setState({ active: false });
     document.body.classList.remove('modal-open');  // "unlock" the screen
-  }
-
-  handleOptionSelected(value: any, text: string) {
-    this.setState({ value, search: text });
-    this.handleClickOutside();
   }
 
   clearValue() {

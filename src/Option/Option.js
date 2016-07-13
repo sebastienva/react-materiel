@@ -21,6 +21,7 @@ class Option extends Component {
     multiple: false,
     preview: '',
     value: null,
+    noInk: false,
   }
 
   props: Props;
