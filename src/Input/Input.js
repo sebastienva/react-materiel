@@ -7,7 +7,7 @@ type Props = {
   value: any,
   label: string,
   float: boolean,
-  onChange: (arg1: string) => void,
+  onChange: ?(arg1: string) => void,
   onKeyDown: ?() => void,
   disabled: boolean
 }
@@ -29,32 +29,22 @@ class Input extends Component {
   state: State;
   input: any;
 
-  handleBlur: () => void;
-  handleFocus: () => void;
-  handleChange: () => void;
-  handleClick: () => void;
-
   constructor(props: Object) {
     super(props);
 
     this.state = {
       active: (this.props.value !== ''),
     };
-
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleFocus() {
+  handleFocus = () => {
     this.setState({ active: true });
     if (this.props.onFocus) {
       this.props.onFocus();
     }
   }
 
-  handleBlur() {
+  handleBlur = () => {
     // keep label active if there an error, the error is :after it
     if (this.props.value === '' && this.props.error === '') {
       this.setState({
@@ -67,13 +57,13 @@ class Input extends Component {
     }
   }
 
-  handleChange(e: any) {
+  handleChange = (e: any) => {
     if (this.props.onChange) { // this "if" statement reduce code coverage - todo : investigate
       this.props.onChange(e.target.value);
     }
   }
 
-  handleClick() {
+  handleClick = () => {
     this.input.focus();
     // focus event not triggered by tests (and possibly some browsers ?)
     this.handleFocus();
