@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import Ink from 'react-ink';
 
 import '../../scss/main.scss';
 
@@ -11,10 +12,11 @@ export default class App extends Component {
       <div>
         <header>
           <ul id="nav-mobile" className="side-nav fixed" style={{ transform: 'translateX(0%)' }}>
-            <li className="bold"><Link to="home" activeClassName="active">Home</Link></li>
-            <li className="bold"><Link to="input" activeClassName="active">Input</Link></li>
-            <li className="bold"><Link to="select" activeClassName="active">Select</Link></li>
-            <li className="bold"><Link to="autocomplete" activeClassName="active">Autocomplete</Link></li>
+            <li className="bold"><Link to="home" activeClassName="active"><Ink />Home</Link></li>
+            <li className="bold"><Link to="input" activeClassName="active"><Ink />Input</Link></li>
+            <li className="bold"><Link to="select" activeClassName="active"><Ink />Select</Link></li>
+            <li className="bold"><Link to="autocomplete" activeClassName="active"><Ink />Autocomplete</Link></li>
+            <li className="bold"><Link to="switch" activeClassName="active"><Ink />Switch</Link></li>
           </ul>
         </header>
         <main>
@@ -23,7 +25,7 @@ export default class App extends Component {
           </div>
 
           <div className="footer">
-            
+
           </div>
         </main>
       </div>

@@ -5,19 +5,24 @@ import onClickOutside from 'react-onclickoutside';
 
 import Option from '../Option/Option';
 
+type Props = {
+  value: ?any,
+  multiple: ?boolean,
+  onChange: ?() => void,
+  children: any,
+  label: string,
+  noInk: ?boolean, // disable ink animation
+}
+
+type State = {
+  active: boolean,
+  hideAnimation: boolean,
+};
+
 class Select extends Component {
 
-  props: {
-    value: any,
-    multiple: boolean,
-    onChange: () => void,
-    children: any,
-    label: string
-  };
-
-  state: {
-    active: boolean
-  };
+  props: Props;
+  state: State;
 
   handleOptionSelected: () => void;
 
@@ -26,6 +31,7 @@ class Select extends Component {
 
     this.state = {
       active: false,
+      hideAnimation: false,
     };
 
     this.handleOptionSelected = this.handleOptionSelected.bind(this);
@@ -43,8 +49,10 @@ class Select extends Component {
   }
 
   handleClickOutside() {
-    this.setState({ active: false });
-    document.body.classList.remove('modal-open');  // "unlock" the screen
+    if (this.state.active) {
+      this.hideDropdown();
+      document.body.classList.remove('modal-open');  // "unlock" the screen
+    }
   }
 
   handleOptionSelected(val) {
@@ -59,19 +67,29 @@ class Select extends Component {
         currentVal.splice(index, 1);
       }
     } else {
-      this.setState({ active: false });
+      this.hideDropdown();
       currentVal = val;
     }
     // trigger change
     this.props.onChange(currentVal);
   }
 
-  isValueSelected(val) {
+  hideDropdown() {
+    // disable dropdown after "hide" animation
+    this.setState({ hideAnimation: true });
+    setTimeout(() => {
+      this.setState({ active: false, hideAnimation: false });
+    }, 200);
+  }
+
+  isValueSelected(val): boolean {
+    let res: boolean;
     if (this.props.multiple) {
-      return this.props.value.indexOf(val) !== -1;
+      res = this.props.value.indexOf(val) !== -1;
     } else {
-      return this.props.value === val;
+      res = this.props.value === val;
     }
+    return res;
   }
 
   addOption(element, options, preview) {
@@ -92,6 +110,7 @@ class Select extends Component {
         value={element.props.value}
         active={optionActive}
         multiple={this.props.multiple}
+        noInk={this.props.noInk}
       >
         {element.props.children}
       </Option>
@@ -107,6 +126,7 @@ class Select extends Component {
     const dropDownContentClasses: string = classNames({
       'dropdown-content select-dropdown multiple-select-dropdown': true,
       active: this.state.active,
+      hideAnimation: this.state.hideAnimation,
     });
     const labelClasses: string = classNames({
       active: this.props.multiple ? this.props.value.length : this.props.value != null,

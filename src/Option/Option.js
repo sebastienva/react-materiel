@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import Ink from 'react-ink';
 
 type Props = {
   children: any,
@@ -8,7 +9,8 @@ type Props = {
   onSelect: (value: any, preview: any) => void,
   multiple: ?boolean,
   value: any,
-  preview: ?string
+  preview: ?string,
+  noInk: ?boolean,
 };
 
 class Option extends Component {
@@ -23,15 +25,7 @@ class Option extends Component {
 
   props: Props;
 
-  handleSelect: () => void;
-
-  constructor(props: Object) {
-    super(props);
-
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  handleSelect() {
+  handleSelect = () => {
     this.props.onSelect(this.props.value, (this.props.preview || this.props.children));
   }
 
@@ -54,9 +48,14 @@ class Option extends Component {
       option = <span>{this.props.children}</span>;
     }
 
+    let ink = '';
+    if (this.props.noInk) {
+      ink = <Ink />;
+    }
+
     return (
       <li onClick={this.handleSelect} className={optionClasses}>
-        {option}
+        {option} {ink}
       </li>
     );
   }

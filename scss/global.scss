@@ -11,6 +11,10 @@ body.modal-open {
 main {
   padding-left: 240px;
   padding-top: 50px;
+
+  .container {
+    min-height: 500px;
+  }
 }
 
 input {
@@ -33,4 +37,26 @@ label:after {
 .footer {
   background: #ccc;
   height: 200px;
+}
+
+.side-nav  {
+  a {
+    line-height: 44px;
+    height: 44px;
+  }
+  a.active {
+    background-color: rgba(0,0,0,.1);
+  }
+}
+
+/* for react-ink compatibilty */
+ul.side-nav {
+  li {
+    position: relative;
+  }
+}
+.select-dropdown {
+  li {
+    position: relative;
+  }
 }
