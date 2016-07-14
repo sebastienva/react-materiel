@@ -7,7 +7,6 @@ import Switch from './Switch';
 describe('<Switch/>', function () {
   it('should render a switch', () => {
     const wrapper = shallow(<Switch value={true}/>);
-    expect(wrapper.find('span').hasClass('lever')).to.be.true;
     expect(wrapper.find('input').prop('type')).to.equal('checkbox');
   });
 

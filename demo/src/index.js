@@ -9,6 +9,7 @@ import SelectDemo from './SelectDemo/SelectDemo';
 import AutocompleteDemo from './AutocompleteDemo/AutocompleteDemo';
 import PreloaderDemo from './PreloaderDemo/PreloaderDemo';
 import SwitchDemo from './SwitchDemo/SwitchDemo';
+import ChipDemo from './ChipDemo/ChipDemo';
 
 render((
   <Router history={hashHistory}>
@@ -20,7 +21,7 @@ render((
       <Route path="/autocomplete" component={AutocompleteDemo} />
       <Route path="/preloader" component={PreloaderDemo} />
       <Route path="/switch" component={SwitchDemo} />
-
+      <Route path="/chip" component={ChipDemo} />
     </Route>
   </Router>
 ), document.getElementById('root'));
