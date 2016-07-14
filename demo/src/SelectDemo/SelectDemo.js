@@ -25,23 +25,23 @@ class SelectDemo extends Component {
     select5: ?number,
   };
 
-  handleSelect1(value: number) {
+  handleSelect1 = (value: number) => {
     this.setState({ select1: value });
   }
 
-  handleSelect2(value: number[]) {
+  handleSelect2= (value: number[]) => {
     this.setState({ select2: value });
   }
 
-  handleSelect3(value: number) {
+  handleSelect3 =(value: number) => {
     this.setState({ select3: value });
   }
 
-  handleSelect4(value: number[]) {
+  handleSelect4 = (value: number[]) => {
     this.setState({ select4: value });
   }
 
-  handleSelect5(value: number) {
+  handleSelect5 = (value: number) => {
     this.setState({ select5: value });
   }
 
@@ -62,7 +62,7 @@ class SelectDemo extends Component {
         <h3>Simple</h3>
         <div className="row">
           <div className="input-field col s6">
-            <Select value={this.state.select1} label="Select an option" onChange={this.handleSelect1.bind(this)}>
+            <Select value={this.state.select1} label="Select an option" onChange={this.handleSelect1}>
               {options}
             </Select>
           </div>
@@ -71,7 +71,7 @@ class SelectDemo extends Component {
         <h3>Multiple</h3>
         <div className="row">
           <div className="input-field col s6">
-            <Select value={this.state.select2} multiple label="Select some options" onChange={this.handleSelect2.bind(this)}>
+            <Select value={this.state.select2} multiple label="Select some options" onChange={this.handleSelect2}>
               {options}
             </Select>
           </div>
@@ -80,7 +80,7 @@ class SelectDemo extends Component {
         <h3>Group</h3>
         <div className="row">
           <div className="input-field col s6">
-            <Select value={this.state.select3} label="Select an option" onChange={this.handleSelect3.bind(this)}>
+            <Select value={this.state.select3} label="Select an option" onChange={this.handleSelect3}>
               <optgroup label="Group 1">
                 <option value={1}>Test 1</option>
                 <option value={2}>Test 2</option>
@@ -96,7 +96,7 @@ class SelectDemo extends Component {
         <h3>Group + Multiple</h3>
         <div className="row">
           <div className="input-field col s6">
-            <Select value={this.state.select4} label="Select some options" multiple onChange={this.handleSelect4.bind(this)}>
+            <Select value={this.state.select4} label="Select some options" multiple onChange={this.handleSelect4}>
               <optgroup label="Group 1">
                 <option value={1}>Test 1</option>
                 <option value={2}>Test 2</option>
@@ -112,7 +112,7 @@ class SelectDemo extends Component {
         <h3>Templating</h3>
         <div className="row">
           <div className="input-field col s6">
-            <Select value={this.state.select5} label="Select an option" onChange={this.handleSelect5.bind(this)}>
+            <Select value={this.state.select5} label="Select an option" onChange={this.handleSelect5}>
               {optionsHtml}
             </Select>
           </div>

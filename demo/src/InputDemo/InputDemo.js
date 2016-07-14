@@ -12,11 +12,6 @@ class InputDemo extends Component {
     disable: string
   };
 
-  handleFirstName: () => void;
-  handleLastName: () => void;
-  handleEmail: () => void;
-  handleDisable: () => void;
-
   constructor(props: any) {
     super(props);
 
@@ -26,26 +21,21 @@ class InputDemo extends Component {
       email: 'test',
       disable: "I'm disabled",
     };
-
-    this.handleFirstName = this.handleFirstName.bind(this);
-    this.handleLastName = this.handleLastName.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handleDisable = this.handleDisable.bind(this);
   }
 
-  handleFirstName(value: string) {
+  handleFirstName = (value: string) => {
     this.setState({ firstName: value });
   }
 
-  handleLastName(value: string) {
+  handleLastName = (value: string) => {
     this.setState({ lastName: value });
   }
 
-  handleEmail(value: string) {
+  handleEmail = (value: string) => {
     this.setState({ email: value });
   }
 
-  handleDisable(value: string) {
+  handleDisable = (value: string) => {
     this.setState({ disable: value });
   }
 
