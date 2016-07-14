@@ -50,13 +50,13 @@ class Option extends Component {
     }
 
     let ink = '';
-    if (this.props.noInk) {
+    if (!this.props.noInk) {
       ink = <Ink />;
     }
 
     return (
       <li onClick={this.handleSelect} className={optionClasses}>
-        {option} {ink}
+        {option}{ink}
       </li>
     );
   }
