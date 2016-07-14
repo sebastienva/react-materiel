@@ -6,7 +6,7 @@ import Input from './Input';
 
 describe('<Input/>', function () {
   it('should have a floating label', () => {
-    const wrapper = shallow(<Input label="bla" float={true} />);
+    const wrapper = shallow(<Input label="bla" float />);
 
     // check labelt
     expect(wrapper.find('label').text()).to.equal('bla');
@@ -29,7 +29,7 @@ describe('<Input/>', function () {
 
   it('should be clickable', () => {
     // mount to test ref
-    const wrapper = mount(<Input label="bla" float={true} />);
+    const wrapper = mount(<Input label="bla" float />);
     wrapper.find('label').simulate('click');
     expect(wrapper.find('label').hasClass('active')).to.be.true;
   });
