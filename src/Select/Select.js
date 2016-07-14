@@ -127,7 +127,7 @@ class Select extends Component {
       hideAnimation: this.state.hideAnimation,
     });
     const labelClasses: string = classNames({
-      active: this.props.multiple ? this.props.value.length : this.props.value != null,
+      active: (this.props.multiple && this.props.value) ? this.props.value.length : this.props.value != null,
       'label-field': true,
     });
 
