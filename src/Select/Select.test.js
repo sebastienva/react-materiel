@@ -12,7 +12,7 @@ describe('<Select/>', function () {
     expect(wrapper.find('label').text()).to.equal('Select label');
   });
 
-  it('should render options', () => {
+  it('should render options', (done) => {
     const wrapper = mount(
       <Select label="Select label">
         <option value="1">Test</option>
@@ -33,6 +33,7 @@ describe('<Select/>', function () {
     expect(wrapper.find('ul').hasClass('hideAnimation')).to.be.true;
     setTimeout(() => {
       expect(wrapper.find('ul').hasClass('active')).to.be.false;
+      done();
     }, 300); // wait "animation" delay
   });
 

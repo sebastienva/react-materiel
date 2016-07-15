@@ -6,7 +6,7 @@
     "start": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
     "build": "webpack",
     "lint": "eslint src",
-    "test": "mocha test/helpers/browser.js src/**/*.spec.js",
+    "test": "mocha test/helpers/browser.js src/**/*.test.js",
     "cover": "cross-env NODE_ENV=test nyc --reporter=html npm test",
     "coveralls": "cross-env NODE_ENV=test nyc --reporter=text-lcov npm test | coveralls"
   },

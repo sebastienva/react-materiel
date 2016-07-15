@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
+import sinon from 'sinon';
 
 import Input from './Input';
 
@@ -53,5 +54,20 @@ describe('<Input/>', function () {
     );
 
     wrapper.find('input').simulate('change', { target: { value: 'test' } });
+  });
+
+  it('should call blur and focus callback', () => {
+    const handleBlur = sinon.spy();
+    const handleFocus = sinon.spy();
+
+    const wrapper = shallow(
+      <Input label="test" onFocus={handleFocus} onBlur={handleBlur} />
+    );
+
+    wrapper.find('input').simulate('focus');
+    expect(handleFocus.calledOnce).to.be.true;
+
+    wrapper.find('input').simulate('blur');
+    expect(handleBlur.calledOnce).to.be.true;
   });
 });
