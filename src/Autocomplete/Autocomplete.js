@@ -25,6 +25,7 @@ class Autocomplete extends Component {
 
   static defaultProps = {
     strict: false,
+    isLoading: false,
   };
 
   props: Props;
@@ -66,6 +67,10 @@ class Autocomplete extends Component {
 
   handleOptionSelected = (value: any, text: string) => {
     this.setState({ value, search: text });
+    this.handleClickOutside();
+  }
+
+  handleBlur = () => {
     this.handleClickOutside();
   }
 
@@ -120,6 +125,7 @@ class Autocomplete extends Component {
           float
           onChange={this.handleSearch}
           onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
         />
         {loading} {closeIcon}
