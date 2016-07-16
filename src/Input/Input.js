@@ -58,7 +58,7 @@ class Input extends Component {
   }
 
   handleChange = (e: any) => {
-    if (this.props.onChange) { // this "if" statement reduce code coverage - todo : investigate
+    if (this.props.onChange) {
       this.props.onChange(e.target.value);
     }
   }

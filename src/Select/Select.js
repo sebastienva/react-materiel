@@ -148,7 +148,7 @@ class Select extends Component {
 
     // final render
     return (
-      <div className="select-wrapper" onFocus={this.handleFocus.bind(this)} onKeyDown={this.handleKeyDown.bind(this)} >
+      <div className="select-wrapper" onFocus={this.handleFocus.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
         <span className="caret">▼</span>
         <label className={labelClasses}>{this.props.label}</label>
         <input type="text" className={dropDownClasses} readOnly value="" />
