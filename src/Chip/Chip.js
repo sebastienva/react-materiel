@@ -1,12 +1,16 @@
 // @flow
 import React, { Component } from 'react';
-import classNames from 'classnames';
 
 type Props = {
-  children: any,
+  /** Chip content */
+  children: Node,
+  /** Callback on close */
   onClose: ?() => void,
 };
 
+/**
+ wip
+*/
 class Chip extends Component {
 
   props: Props;

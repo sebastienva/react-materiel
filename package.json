@@ -8,7 +8,8 @@
     "lint": "eslint src",
     "test": "mocha test/helpers/browser.js src/**/**.js",
     "cover": "cross-env NODE_ENV=test nyc --reporter=html npm test",
-    "coveralls": "cross-env NODE_ENV=test nyc --reporter=text-lcov npm test | coveralls"
+    "coveralls": "cross-env NODE_ENV=test nyc --reporter=text-lcov npm test | coveralls",
+    "doc": "./node_modules/.bin/react-docgen src/ | ./doc/buildDocs.sh"
   },
   "repository": {
     "type": "git",

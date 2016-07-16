@@ -19,7 +19,7 @@ type State = {
   hideAnimation: boolean,
 };
 
-class Select extends Component {
+export class Select extends Component {
 
   props: Props;
   state: State;
