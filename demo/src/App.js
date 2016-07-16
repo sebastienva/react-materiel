@@ -18,6 +18,7 @@ export default class App extends Component {
             <li className="bold"><Link to="autocomplete" activeClassName="active"><Ink />Autocomplete</Link></li>
             <li className="bold"><Link to="switch" activeClassName="active"><Ink />Switch</Link></li>
             <li className="bold"><Link to="chip" activeClassName="active"><Ink />Chip</Link></li>
+            <li className="bold"><Link to="preloader" activeClassName="active"><Ink />Preloader</Link></li>
           </ul>
         </header>
         <main>
