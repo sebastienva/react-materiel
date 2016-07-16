@@ -6,7 +6,7 @@
 Props
 -----
 
-Name | Type | Required | Description
------|------|----------|------------
-color|union|Yes|
-size|union|Yes|
+Name | Type | Required | Default | Description
+-----|------|----------|---------|------------
+color|union|No|'none'|
+size|union|No|'medium'|

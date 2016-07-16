@@ -53,8 +53,8 @@ function generateProps(props) {
     title + '\n' +
     stringOfLength('-', title.length) + '\n' +
     '\n' +
-    'Name | Type | Required | Description'  + '\n' +
-    '-----|------|----------|------------'  + '\n' +
+    'Name | Type | Required | Default | Description'  + '\n' +
+    '-----|------|----------|---------|------------'  + '\n' +
 
     Object.keys(props).sort().map(function(propName) {
       //return generateProp(propName, props[propName]);
@@ -65,7 +65,16 @@ function generateProps(props) {
         type = data.flowType.name;
       }
 
-      return propName + '|' + type + '|' + (data.flowType.nullable ? 'No' : 'Yes') + '|' + data.description;
+      var required = 'Yes';
+      var defaultValue = '';
+      if(data.defaultValue) {
+        required = 'No';
+        defaultValue += data.defaultValue.value;
+      } else if(data.flowType.nullable) {
+        required = 'No';
+      }
+
+      return propName + '|' + type + '|' + required + '|' + defaultValue + '|' + data.description;
     }).join('\n')
   );
 }

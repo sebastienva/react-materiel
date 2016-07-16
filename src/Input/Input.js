@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 type Props = {
-  error: string, // error message
+  error: ?string, // error message
   value: any,
   label: string,
   float: boolean,
@@ -20,8 +20,6 @@ class Input extends Component {
 
   static defaultProps = {
     float: false,
-    error: '',
-    value: '',
     disabled: false,
   };
 
@@ -75,7 +73,7 @@ class Input extends Component {
       'label-field': true,
     });
     const inputClasses = classNames({
-      'validate invalid': (this.props.error !== ''),
+      'validate invalid': (this.props.error != null),
     });
 
     let label = '';

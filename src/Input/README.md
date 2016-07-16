@@ -6,12 +6,12 @@
 Props
 -----
 
-Name | Type | Required | Description
------|------|----------|------------
-disabled|boolean|Yes|
-error|string|Yes|
-float|boolean|Yes|
-label|string|Yes|
-onChange|function|No|
-onKeyDown|function|No|
-value|any|Yes|
+Name | Type | Required | Default | Description
+-----|------|----------|---------|------------
+disabled|boolean|No|false|
+error|string|No||
+float|boolean|No|false|
+label|string|Yes||
+onChange|function|No||
+onKeyDown|function|No||
+value|any|Yes||

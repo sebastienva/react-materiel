@@ -6,6 +6,6 @@
 Props
 -----
 
-Name | Type | Required | Description
------|------|----------|------------
-progress|number|No|
+Name | Type | Required | Default | Description
+-----|------|----------|---------|------------
+progress|number|No|null|

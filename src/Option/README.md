@@ -6,12 +6,12 @@
 Props
 -----
 
-Name | Type | Required | Description
------|------|----------|------------
-active|boolean|Yes|
-children|any|Yes|
-multiple|boolean|No|
-noInk|boolean|No|
-onSelect|function|Yes|
-preview|string|No|
-value|any|Yes|
+Name | Type | Required | Default | Description
+-----|------|----------|---------|------------
+active|boolean|No|false|
+children|any|No|null|
+multiple|boolean|No|false|
+noInk|boolean|No|false|
+onSelect|function|Yes||
+preview|string|No|''|
+value|any|No|null|
