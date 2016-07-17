@@ -10,8 +10,8 @@ describe('<LinearPreloader/>', function () {
     expect(wrapper.find('.determinate').length).to.equal(1);
   });
 
-  it('should render an "undeterminate" linear preloader', () => {
+  it('should render an "indeterminate" linear preloader', () => {
     const wrapper = shallow(<LinearPreloader />);
-    expect(wrapper.find('.undeterminate').length).to.equal(1);
+    expect(wrapper.find('.indeterminate').length).to.equal(1);
   });
 });

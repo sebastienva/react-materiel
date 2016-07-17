@@ -21,6 +21,7 @@ class Input extends Component {
   static defaultProps = {
     float: false,
     disabled: false,
+    error: null,
   };
 
   props: Props;
@@ -44,7 +45,7 @@ class Input extends Component {
 
   handleBlur = () => {
     // keep label active if there an error, the error is :after it
-    if (this.props.value === '' && this.props.error === '') {
+    if (this.props.value === '' && this.props.error == null) {
       this.setState({
         active: false,
       });

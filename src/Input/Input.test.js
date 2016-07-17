@@ -12,7 +12,7 @@ describe('<Input/>', function () {
     // check labelt
     expect(wrapper.find('label').text()).to.equal('bla');
 
-    // checck "floating" on focus
+    // check "floating" on focus
     wrapper.find('input').simulate('focus');
     expect(wrapper.find('label').hasClass('active')).to.be.true;
 
