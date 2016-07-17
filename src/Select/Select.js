@@ -6,12 +6,18 @@ import onClickOutside from 'react-onclickoutside';
 import Option from '../Option/Option';
 
 type Props = {
+  /** Value of the select field */
   value: ?any,
+  /** Specifies that multiple options can be selected at once */
   multiple: ?boolean,
+  /** Event call when the value is changed */
   onChange: ?() => void,
+  /** `option` elements */
   children: any,
+  /** Label of the field */
   label: string,
-  noInk: ?boolean, // disable ink animation
+  /** Disable ink animation */
+  noInk: ?boolean,
 }
 
 type State = {
@@ -19,6 +25,11 @@ type State = {
   hideAnimation: boolean,
 };
 
+/**
+  Select implementation for material.
+  The api is very simular to a standard select field.
+  You should be able to use it exactly the same way as "standard" select.
+*/
 export class Select extends Component {
 
   props: Props;

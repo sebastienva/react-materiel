@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 type Props = {
+  /** Progress percentage of the bar */
   progress: ?number
 }
 
+/**
+  Wip
+*/
 class LinearPreloader extends Component {
 
   props: Props;

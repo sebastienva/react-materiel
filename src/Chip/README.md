@@ -1,7 +1,7 @@
-`Chip` (component)
-==================
+`Chip`
+======
 
-wip
+Chip implementation.
 
 Props
 -----

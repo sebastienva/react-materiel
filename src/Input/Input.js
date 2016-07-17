@@ -3,12 +3,19 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 type Props = {
+  /** Error message related to the input field */
   error: ?string, // error message
+  /** Value of the input field */
   value: any,
+  /** Label of the input field */
   label: string,
+  /** Determine if the label is floating */
   float: boolean,
+  /** Callback fired when input value change */
   onChange: ?(arg1: string) => void,
+  /** Callback fired when a key is pressed */
   onKeyDown: ?() => void,
+  /** Disable the input field */
   disabled: boolean
 }
 
@@ -16,6 +23,10 @@ type State = {
   active: boolean
 }
 
+/**
+  Input field that follow material spec.
+  The "api" is similar to a standar input, the only difference is the label/error props.
+*/
 class Input extends Component {
 
   static defaultProps = {

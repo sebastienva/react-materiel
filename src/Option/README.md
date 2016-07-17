@@ -1,7 +1,7 @@
-`Option` (component)
-====================
+`Option`
+========
 
-
+For internal use
 
 Props
 -----

@@ -2,10 +2,15 @@
 import React, { Component } from 'react';
 
 type Props = {
+  /** Size of the preloader */
   size: 'small' | 'medium' | 'big',
+  /** Color of the preloader */
   color: 'red' | 'blue' | 'yellow' | 'green' | 'none',
 }
 
+/**
+ Wip
+*/
 class CircularPreloader extends Component {
 
   static defaultProps = {

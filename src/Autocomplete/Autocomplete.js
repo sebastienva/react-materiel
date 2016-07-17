@@ -8,11 +8,14 @@ import Input from '../Input/Input';
 import CircularPreloader from '../CircularPreloader/CircularPreloader';
 
 type Props = {
+  /** Autocomplete content (must be options) */
   children: any,
+  /** Display a loading throbber */
   isLoading: boolean,
+  /** Label text of the field **/
   label: string,
-  strict: boolean,
-  onSearch: () => void,
+  /** Callback fired when a search is requested. This callback is already debounced to limit request */
+  onSearch: (value: string) => void,
 }
 
 type State = {
@@ -21,10 +24,13 @@ type State = {
   value: any,
 }
 
-class Autocomplete extends Component {
+/**
+  This component is not present in materialize.
+  This field works like a select but with a "search" function.
+*/
+export class Autocomplete extends Component {
 
   static defaultProps = {
-    strict: false,
     isLoading: false,
   };
 

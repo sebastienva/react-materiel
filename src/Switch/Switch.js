@@ -3,13 +3,22 @@ import React, { Component } from 'react';
 import Ink from 'react-ink';
 
 type Props = {
+  /** Callback fired when the switch is checked/unchecked */
   onChange: ?(value: ?boolean) => void,
-  value: any, // value (like a real checkbox this is not the real value but the "on" value)
+  /** value (like a real checkbox this is not the real value but the "on" value) */
+  value: any,
+  /** Tells if the switch is checked */
   checked: ?boolean,
+  /** Label for "on" value */
   labelOff: ?string,
+  /** Label for "off" value */
   labelOn: ?string,
 }
 
+/**
+  Switch component.
+  This api simular to a checkbox.
+*/
 class Switch extends Component {
 
   static defaultProps = {

@@ -13,6 +13,9 @@ type Props = {
   noInk: ?boolean,
 };
 
+/**
+ For internal use
+*/
 class Option extends Component {
 
   static defaultProps = {

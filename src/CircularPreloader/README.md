@@ -1,12 +1,12 @@
-`CircularPreloader` (component)
-===============================
+`CircularPreloader`
+===================
 
-
+Wip
 
 Props
 -----
 
 Name | Type | Required | Default | Description
 -----|------|----------|---------|------------
-color|union|No|'none'|
-size|union|No|'medium'|
+color|union|No|'none'|Color of the preloader
+size|union|No|'medium'|Size of the preloader

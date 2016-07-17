@@ -9,7 +9,7 @@ type Props = {
 };
 
 /**
- wip
+  Chip implementation.
 */
 class Chip extends Component {
 

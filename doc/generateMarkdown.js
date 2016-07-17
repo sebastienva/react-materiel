@@ -9,7 +9,7 @@ function stringOfLength(string, length) {
 }
 
 function generateTitle(name) {
-  var title = '`' + name + '` (component)';
+  var title = '`' + name + '`';
   return title + '\n' + stringOfLength('=', title.length) + '\n';
 }
 
