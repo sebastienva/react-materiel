@@ -8,7 +8,7 @@ type Props = {
 }
 
 /**
-  Wip
+  todo
 */
 class LinearPreloader extends Component {
 

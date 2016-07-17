@@ -1,7 +1,7 @@
 `CircularPreloader`
 ===================
 
-Wip
+todo
 
 Props
 -----

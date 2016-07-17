@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Ink from 'react-ink';
 
 type Props = {
-  children: any,
+  children: Node,
   active: boolean,
   onSelect: (value: any, preview: any) => void,
   multiple: ?boolean,
@@ -14,7 +14,7 @@ type Props = {
 };
 
 /**
- For internal use
+  For internal use.
 */
 class Option extends Component {
 

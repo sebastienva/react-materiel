@@ -1,7 +1,7 @@
 `Chip`
 ======
 
-Chip implementation.
+todo
 
 Props
 -----

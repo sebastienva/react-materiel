@@ -1,7 +1,7 @@
 `Option`
 ========
 
-For internal use
+For internal use.
 
 Props
 -----
@@ -9,7 +9,7 @@ Props
 Name | Type | Required | Default | Description
 -----|------|----------|---------|------------
 active|boolean|No|false|
-children|any|No|null|
+children|Node|No|null|
 multiple|boolean|No|false|
 noInk|boolean|No|false|
 onSelect|function|Yes||

@@ -1,8 +1,8 @@
 `Input`
 =======
 
-Input field that follow material spec.
-  The "api" is similar to a standar input, the only difference is the label/error props.
+This component works like a (standard input)[http://www.w3schools.com/tags/tag_input.asp].
+  Differences come from label/error.
 
 Props
 -----

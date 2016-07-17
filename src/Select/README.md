@@ -1,9 +1,8 @@
 `Select`
 ========
 
-Select implementation for material.
-  The api is very simular to a standard select field.
-  You should be able to use it exactly the same way as "standard" select.
+This component works like a [standard select](http://www.w3schools.com/tags/tag_select.asp).
+  You should be able to use it exactly the same way.
 
 Props
 -----

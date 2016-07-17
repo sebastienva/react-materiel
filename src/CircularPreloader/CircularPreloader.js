@@ -9,7 +9,7 @@ type Props = {
 }
 
 /**
- Wip
+  todo
 */
 class CircularPreloader extends Component {
 

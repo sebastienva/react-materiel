@@ -1,7 +1,7 @@
 `LinearPreloader`
 =================
 
-Wip
+todo
 
 Props
 -----

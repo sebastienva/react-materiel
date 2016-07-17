@@ -1,8 +1,7 @@
 `Switch`
 ========
 
-Switch component.
-  This api simular to a checkbox.
+Similar to a [standard checkbox](http://www.w3schools.com/tags/att_input_checked.asp).
 
 Props
 -----
