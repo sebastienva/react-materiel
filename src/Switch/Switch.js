@@ -22,8 +22,8 @@ class Switch extends Component {
 
   static defaultProps = {
     value: true,
-    labelOff: '',
-    labelOn: '',
+    labelOff: 'On',
+    labelOn: 'Off',
   };
 
   props: Props;
