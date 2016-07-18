@@ -2,7 +2,7 @@
   .loader {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 3px;
 
     .preloader-wrapper  {
       width: 22px;
@@ -10,15 +10,16 @@
     }
   }
 
-  .dropdown-content.active {
+  .dropdown-content {
     top: 35px;
+    animation: none;
   }
 
   .close {
     position: absolute;
     margin-right: 5px;
     right: 2px;
-    top: 0px;
+    top: 3px;
     width: 16px;
     height: 16px;
     cursor: pointer;

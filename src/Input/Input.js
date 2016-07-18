@@ -6,7 +6,7 @@ type Props = {
   /** Error message related to the input field */
   error: ?string,
   /** Value of the input field */
-  value: any,
+  value: string,
   /** Label of the input field */
   label: string,
   /** Determine if the label is floating */

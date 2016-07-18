@@ -5,6 +5,7 @@ import onClickOutside from 'react-onclickoutside';
 
 import Option from '../Option/Option';
 import Input from '../Input/Input';
+
 import CircularPreloader from '../CircularPreloader/CircularPreloader';
 
 type Props = {
@@ -16,26 +17,35 @@ type Props = {
   label: string,
   /** Callback fired when a search is requested. This callback is already debounced to limit request */
   onSearch: (value: string) => void,
+  /** Callback fired when an option is selected */
+  onChange: (value: any) => void,
+  /** Debounce search */
+  debounce: number,
+  /** Value of the autocomplete field */
+  value: ?any,
 }
 
 type State = {
   active: boolean,
   search: string,
-  value: any,
 }
 
 /**
-  This component is similar to a [Select](https://github.com/sebastienva/materialize-me/tree/master/src/Select) but with a "search" function.
+  This component is similar to a [Select](https://github.com/sebastienva/materialize-me/tree/master/src/Select)
+  but with a "search" function.
 */
-export class Autocomplete extends Component {
+class Autocomplete extends Component {
 
   static defaultProps = {
     isLoading: false,
+    value: null,
+    debounce: 300,
   };
 
   props: Props;
   state: State;
   timeout: any;
+  input: any;
 
   constructor(props: Object) {
     super(props);
@@ -43,7 +53,6 @@ export class Autocomplete extends Component {
     this.state = {
       active: false,
       search: '',
-      value: null,
     };
   }
 
@@ -55,12 +64,12 @@ export class Autocomplete extends Component {
     }
     this.timeout = setTimeout(() => {
       this.props.onSearch(value);
-    }, 300);
+    }, this.props.debounce);
   }
 
   handleKeyDown = (e: any) => {
     // clear value on backspace
-    if (e.keyCode === 8 && this.state.value !== null) {
+    if (e.keyCode === 8 && this.props.value !== null) {
       this.clearValue();
     }
   }
@@ -71,11 +80,8 @@ export class Autocomplete extends Component {
   }
 
   handleOptionSelected = (value: any, text: string) => {
-    this.setState({ value, search: text });
-    this.handleClickOutside();
-  }
-
-  handleBlur = () => {
+    this.props.onChange(value, text);
+    this.setState({ search: text });
     this.handleClickOutside();
   }
 
@@ -85,18 +91,21 @@ export class Autocomplete extends Component {
   }
 
   clearValue() {
-    this.setState({ value: null, search: '' });
+    this.setState({ search: '' });
+    this.props.onChange(null, null);
     this.props.onSearch('');
+
+    this.input.input.focus();
   }
 
   render() {
     const dropDownContentClasses: string = classNames({
       'dropdown-content select-dropdown multiple-select-dropdown': true,
-      active: this.state.active && this.state.value === null,
+      active: this.state.active && this.props.value === null,
     });
 
     let closeIcon = '';
-    if (this.state.value !== null) {
+    if (this.props.value !== null) {
       closeIcon = (<div className="close" onClick={this.clearValue.bind(this)}>
         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24">
           <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -107,7 +116,7 @@ export class Autocomplete extends Component {
 
     let loading = '';
     if (this.props.isLoading) {
-      loading = <CircularPreloader className="loader" />;
+      loading = <span className="loader"><CircularPreloader /></span>;
     }
 
     let options = React.Children.map(this.props.children, (child) =>
@@ -130,8 +139,8 @@ export class Autocomplete extends Component {
           float
           onChange={this.handleSearch}
           onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
+          ref={(ref) => { this.input = ref; }}
         />
         {loading} {closeIcon}
         <ul className={dropDownContentClasses}>

@@ -4,33 +4,39 @@ import { Autocomplete } from '../../../src';
 
 class AutocompleteDemo extends Component {
 
-  state: {
-    auto: string,
-    options: Array<Object>,
-    isLoading: boolean
-  };
+  static STATES = `Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,
+      Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,
+      Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,
+      Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,
+      North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,
+      South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,
+      Wisconsin, Wyoming`;
 
-  handleSearch: () => void;
-  handleAuto: () => void;
+  state: {
+    auto: ?string,
+    options: Array<Object>,
+    isLoading: boolean,
+    states: Array<string>,
+    state: string,
+  };
 
   constructor(props: any) {
     super(props);
 
     this.state = {
-      auto: '',
+      auto: null,
+      state: null,
       options: [],
       isLoading: false,
+      states: AutocompleteDemo.STATES.split(', '),
     };
-
-    this.handleAuto = this.handleAuto.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleAuto(value: string) {
+  handleAuto = (value: string) => {
     this.setState({ auto: value });
   }
 
-  handleSearch(value: string) {
+  handleSearch = (value: string) => {
     this.setState({ isLoading: true });
     fetch(`https://api.github.com/search/repositories?q=${value}`).then(res => res.json()).then(data => {
       let options = [];
@@ -41,6 +47,18 @@ class AutocompleteDemo extends Component {
     });
   }
 
+  handleSearchState = (value: string) => {
+    const states = AutocompleteDemo.STATES.split(', ').filter((state) =>
+      state.toLowerCase().indexOf(value.toLowerCase()) === 0
+    );
+
+    this.setState({ states });
+  }
+
+  handleState = (value: string) => {
+    this.setState({ state: value });
+  }
+
   render() {
     return (
       <div>
@@ -48,11 +66,11 @@ class AutocompleteDemo extends Component {
         <div className="row">
           <div className="input-field col s6">
             <Autocomplete
-              value={this.state.auto} label="Autocomplete"
+              label="Autocomplete"
+              value={this.state.auto}
               isLoading={this.state.isLoading}
               onChange={this.handleAuto}
               onSearch={this.handleSearch}
-              strict
             >
               {this.state.options.map(option =>
                 (<option key={option.id} value={option.id} preview={option.full_name}>
@@ -60,6 +78,22 @@ class AutocompleteDemo extends Component {
                   <strong>{option.full_name}</strong><br />
                   <small>{option.description}</small>
                 </option>)
+              )}
+            </Autocomplete>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field col s6">
+            <Autocomplete
+              label="States"
+              value={this.state.state}
+              onChange={this.handleState}
+              onSearch={this.handleSearchState}
+              debounce={0}
+            >
+              {this.state.states.map(state =>
+                (<option key={state} value={state}>{state}</option>)
               )}
             </Autocomplete>
           </div>
