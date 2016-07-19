@@ -6,3 +6,7 @@ export CircularPreloader from './CircularPreloader/CircularPreloader';
 export LinearPreloader from './LinearPreloader/LinearPreloader';
 export Switch from './Switch/Switch';
 export Chip from './Chip/Chip';
+export Button from './Button/Button';
+export Card from './Card/Card';
+export Modal from './Modal/Modal';
+export Checkbox from './Checkbox/Checkbox';
