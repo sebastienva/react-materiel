@@ -1,0 +1,6 @@
+.modal {
+  &.open {
+    display: block;
+    z-index: 1003;
+  }
+}
