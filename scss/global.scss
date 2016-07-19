@@ -2,6 +2,10 @@ html {
   font-size: 16px;
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body.modal-open {
   position: static;
   height: auto;
@@ -11,9 +15,9 @@ body.modal-open {
 main {
   padding-left: 240px;
   padding-top: 50px;
-
   .container {
-    min-height: 500px;
+    min-height: 600px;
+    padding-bottom: 40px;
   }
 }
 
@@ -40,6 +44,7 @@ label:after {
 }
 
 .side-nav  {
+  z-index: 100;
   a {
     line-height: 44px;
     height: 44px;
@@ -59,4 +64,8 @@ ul.side-nav {
   li {
     position: relative;
   }
+}
+
+.btn, .btn-flat {
+  position: relative;
 }

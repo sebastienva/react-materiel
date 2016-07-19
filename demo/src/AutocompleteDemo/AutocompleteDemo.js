@@ -25,7 +25,7 @@ class AutocompleteDemo extends Component {
 
     this.state = {
       auto: null,
-      state: null,
+      state: 'Alaska',
       options: [],
       isLoading: false,
       states: AutocompleteDemo.STATES.split(', '),
@@ -86,7 +86,7 @@ class AutocompleteDemo extends Component {
         <div className="row">
           <div className="input-field col s6">
             <Autocomplete
-              label="States"
+              label="State"
               value={this.state.state}
               onChange={this.handleState}
               onSearch={this.handleSearchState}

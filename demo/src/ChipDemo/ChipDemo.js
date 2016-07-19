@@ -11,6 +11,9 @@ class ChipDemo extends Component {
         <Chip>
           <img src="https://avatars1.githubusercontent.com/u/4148039?v=3&s=40" /> Test
         </Chip>
+        <Chip>
+          Test2
+        </Chip>
       </div>
     );
   }

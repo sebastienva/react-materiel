@@ -10,6 +10,10 @@ import AutocompleteDemo from './AutocompleteDemo/AutocompleteDemo';
 import PreloaderDemo from './PreloaderDemo/PreloaderDemo';
 import SwitchDemo from './SwitchDemo/SwitchDemo';
 import ChipDemo from './ChipDemo/ChipDemo';
+import ButtonDemo from './Button/ButtonDemo';
+import CardDemo from './Card';
+import ModalDemo from './Modal';
+import CheckboxDemo from './Checkbox';
 
 render((
   <Router history={hashHistory}>
@@ -22,6 +26,11 @@ render((
       <Route path="/preloader" component={PreloaderDemo} />
       <Route path="/switch" component={SwitchDemo} />
       <Route path="/chip" component={ChipDemo} />
+      <Route path="/button" component={ButtonDemo} />
+      <Route path="/card" component={CardDemo} />
+      <Route path="/modal" component={ModalDemo} />
+      <Route path="/checkbox" component={CheckboxDemo} />
+
     </Route>
   </Router>
 ), document.getElementById('root'));
