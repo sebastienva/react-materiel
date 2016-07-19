@@ -35,12 +35,6 @@ class Switch extends Component {
   }
 
   render() {
-    const inputProps = {};
-
-    if (this.props.checked) {
-      inputProps.defaultChecked = true;
-    }
-
     return (
       <div className="switch" >
         <label>
