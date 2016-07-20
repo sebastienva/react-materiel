@@ -17,7 +17,7 @@ describe('<Button />', function () {
   });
 
   it('should render a flat button', () => {
-    const wrapper = shallow(<Button flat />);
+    const wrapper = shallow(<Button type="flat" />);
     expect(wrapper.find('.btn-flat').length).to.equal(1);
     expect(wrapper.find('.btn').length).to.equal(0);
   });

@@ -38,7 +38,7 @@ class Button extends Component {
 
   render() {
     const buttonClasses: string = classNames({
-      btn: this.props.type === 'raised',
+      btn: this.props.type === 'raised' && this.props.large === false,
       'btn-flat': this.props.type === 'flat',
       'btn-floating': this.props.type === 'floating',
       'btn-large': this.props.large || this.props.type === 'floating',
