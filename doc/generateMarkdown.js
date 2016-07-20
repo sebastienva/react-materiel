@@ -70,7 +70,7 @@ function generateProps(props) {
       if(data.defaultValue) {
         required = 'No';
         defaultValue += data.defaultValue.value;
-      } else if(data.flowType.nullable) {
+      } else if (data.flowType.nullable || data.required === false) {
         required = 'No';
       }
 

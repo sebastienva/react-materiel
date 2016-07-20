@@ -18,7 +18,7 @@ type Props = {
   /** React class, allow to customize the button */
   className: string,
   /** Callback fired when the button is clicked */
-  onClick: ?(e: any) => void,
+  onClick?: (e: any) => void,
 }
 
 /**
