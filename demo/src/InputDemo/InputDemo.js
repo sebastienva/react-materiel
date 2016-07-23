@@ -48,7 +48,7 @@ class InputDemo extends Component {
           </div>
 
           <div className="input-field col s6">
-            <Input value={this.state.lastName} label="Last name" onChange={this.handleLastName} />
+            <Input value={this.state.lastName} label="Last name" length={10} onChange={this.handleLastName} />
           </div>
         </div>
 

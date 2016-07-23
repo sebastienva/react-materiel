@@ -7,7 +7,7 @@ import Input from './Input';
 
 describe('<Input/>', function () {
   it('should have a floating label', () => {
-    const wrapper = shallow(<Input label="bla" float />);
+    const wrapper = shallow(<Input label="bla" float value="" />);
 
     // check labelt
     expect(wrapper.find('label').text()).to.equal('bla');
@@ -30,13 +30,13 @@ describe('<Input/>', function () {
 
   it('should be clickable', () => {
     // mount to test ref
-    const wrapper = mount(<Input label="bla" float />);
+    const wrapper = mount(<Input label="bla" float value="" />);
     wrapper.find('label').simulate('click');
     expect(wrapper.find('label').hasClass('active')).to.be.true;
   });
 
   it('should have a placeholder', () => {
-    const wrapper = shallow(<Input label="bla" />);
+    const wrapper = shallow(<Input label="bla" value="" />);
 
     expect(wrapper.find('label').length).to.equal(0);
     expect(wrapper.find('input').prop('placeholder')).to.equal('bla');
@@ -46,6 +46,7 @@ describe('<Input/>', function () {
     const wrapper = shallow(
       <Input
         label="change"
+        value=""
         onChange={(value) => {
           expect(value).to.equal('test');
           done();
@@ -61,7 +62,7 @@ describe('<Input/>', function () {
     const handleFocus = sinon.spy();
 
     const wrapper = shallow(
-      <Input label="test" onFocus={handleFocus} onBlur={handleBlur} />
+      <Input label="test" value="" onFocus={handleFocus} onBlur={handleBlur} />
     );
 
     wrapper.find('input').simulate('focus');
@@ -69,5 +70,17 @@ describe('<Input/>', function () {
 
     wrapper.find('input').simulate('blur');
     expect(handleBlur.calledOnce).to.be.true;
+  });
+
+  it('should have a character counter', () => {
+    const wrapper = shallow(<Input label="bla" length={10} value="test" />);
+
+    expect(wrapper.find('.character-counter').text()).to.equal('4 / 10');
+  });
+
+  it('should pass down undefined props', () => {
+    const wrapper = shallow(<Input label="bla" maxLength="10" value="test" />);
+
+    expect(wrapper.find('input').prop('maxLength')).to.equal('10');
   });
 });

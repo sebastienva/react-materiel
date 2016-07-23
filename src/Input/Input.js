@@ -12,11 +12,15 @@ type Props = {
   /** Determine if the label is floating */
   float: boolean,
   /** Callback fired when input value change */
-  onChange: ?(arg1: string) => void,
-  /** Callback fired when a key is pressed */
-  onKeyDown: ?() => void,
+  onChange?: (arg1: string) => void,
+  /** onFocus event  */
+  onFocus?: (e: any) => void,
+  /** onBlur event */
+  onBlur?: (e: any) => void,
   /** Disable the input field */
-  disabled: boolean
+  disabled: boolean,
+  /** Enable character counter if defined */
+  length?: number,
 }
 
 type State = {
@@ -47,14 +51,14 @@ class Input extends Component {
     };
   }
 
-  handleFocus = () => {
+  handleFocus = (e: any) => {
     this.setState({ active: true });
     if (this.props.onFocus) {
-      this.props.onFocus();
+      this.props.onFocus(e);
     }
   }
 
-  handleBlur = () => {
+  handleBlur = (e: any) => {
     // keep label active if there an error, the error is :after it
     if (this.props.value === '' && this.props.error == null) {
       this.setState({
@@ -63,7 +67,7 @@ class Input extends Component {
     }
 
     if (this.props.onBlur) {
-      this.props.onBlur();
+      this.props.onBlur(e);
     }
   }
 
@@ -80,36 +84,55 @@ class Input extends Component {
   }
 
   render() {
+    const {
+      float,
+      label,
+      error,
+      value,
+      disabled,
+      length,
+      onChange, // eslint-disable-line no-unused-vars
+      onFocus, // eslint-disable-line no-unused-vars
+      onBlur, // eslint-disable-line no-unused-vars
+      ...other,
+    } = this.props;
+
     const labelClasses = classNames({
-      active: this.state.active || this.props.value,
+      active: this.state.active || value,
       'label-field': true,
     });
     const inputClasses = classNames({
-      'validate invalid': (this.props.error != null),
+      'validate invalid': (error != null),
     });
 
-    let label = '';
+    let labelTag = '';
     let placeholder = '';
-    if (this.props.float) {
-      label = <label data-error={this.props.error} className={labelClasses}>{this.props.label}</label>;
+    if (float) {
+      labelTag = <label data-error={error} className={labelClasses}>{label}</label>;
     } else {
-      placeholder = this.props.label;
+      placeholder = label;
+    }
+
+    let characterCounter = '';
+    if (length) {
+      characterCounter = <span className="character-counter">{value.length} / {length}</span>;
     }
 
     return (
       <span onClick={this.handleClick}>
         <input
-          value={this.props.value}
-          disabled={this.props.disabled}
+          value={value}
+          disabled={disabled}
           className={inputClasses}
           placeholder={placeholder}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          onKeyDown={this.props.onKeyDown}
           ref={(ref) => { this.input = ref; }}
+          {...other}
         />
-        {label}
+        {labelTag}
+        {characterCounter}
       </span>
     );
   }
