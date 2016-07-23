@@ -24,7 +24,6 @@ class Card extends Component {
   props: Props;
 
   render() {
-
     return (
       <div className="card">
         <div className="card-content">
