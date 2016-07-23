@@ -1,14 +1,14 @@
 `Checkbox`
 ==========
 
-Similar to a [standard checkbox](http://www.w3schools.com/tags/att_input_checked.asp).
+The checkbox component is used like a normal react checkbox.
 
 Props
 -----
 
 Name | Type | Required | Default | Description
 -----|------|----------|---------|------------
-checked|boolean|No||Tells if the switch is checked
-label|string|No|''|Label for "on" value
-onChange|function|No||Callback fired when the switch is checked/unchecked
-value|any|No|true|value (like a real checkbox this is not the real value but the "on" value)
+checked|boolean|Yes||Tells if the switch is checked
+disabled|boolean|No|false|Disabled if true
+label|string|No|''|Label of the checkbox
+onChange|function|Yes||Callback fired when the switch is checked/unchecked

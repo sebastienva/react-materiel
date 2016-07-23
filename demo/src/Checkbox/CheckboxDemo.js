@@ -21,11 +21,11 @@ class CheckboxDemo extends Component {
     };
   }
 
-  handleValue1 = (value: ?boolean) => {
+  handleValue1 = (value: boolean) => {
     this.setState({ value1: value });
   };
 
-  handleValue2 = (value: ?boolean) => {
+  handleValue2 = (value: boolean) => {
     this.setState({ value2: value });
   }
 
@@ -36,10 +36,19 @@ class CheckboxDemo extends Component {
   render() {
     return (
       <div>
-        <Checkbox label="Checkbox 1" onChange={this.handleValue1} checked={this.state.value1} />
-        <Checkbox label="Checkbox 2" onChange={this.handleValue2} checked={this.state.value2} />
-      </div>
+        <div className="row">
+          <div className="col s4">
+            <Checkbox label="Checkbox 1" onChange={this.handleValue1} checked={this.state.value1} />
+          </div>
+          <div className="col s4">
+            <Checkbox label="Checkbox 2" onChange={this.handleValue2} checked={this.state.value2} />
+          </div>
 
+          <div className="col s4">
+            <Checkbox label="Checkbox 3" filled onChange={this.handleValue3} checked={this.state.value3} />
+          </div>
+        </div>
+      </div>
     );
   }
 }

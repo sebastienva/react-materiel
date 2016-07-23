@@ -26,7 +26,7 @@ input {
   line-height: 2rem !important;
 }
 
-label:after {
+input:not([type=checkbox]).validate + label {
   margin-top: -10px;
 }
 
@@ -55,17 +55,12 @@ label:after {
 }
 
 /* for react-ink compatibilty */
-ul.side-nav {
-  li {
-    position: relative;
-  }
+ul.side-nav li {
+  position: relative;
 }
-.select-dropdown {
-  li {
-    position: relative;
-  }
+.select-dropdown li {
+  position: relative;
 }
-
 .btn, .btn-flat {
   position: relative;
 }

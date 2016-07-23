@@ -1,42 +1,49 @@
 // @flow
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import Ink from 'react-ink';
 
 type Props = {
   /** Callback fired when the switch is checked/unchecked */
-  onChange: ?(value: ?boolean) => void,
-  /** value (like a real checkbox this is not the real value but the "on" value) */
-  value: any,
+  onChange: (value: ?boolean) => void,
   /** Tells if the switch is checked */
-  checked: ?boolean,
-  /** Label for "on" value */
-  label: ?string,
+  checked: boolean,
+  /** Label of the checkbox */
+  label: string,
+  /** Disabled if true */
+  disabled: boolean,
+  /** Filled appearence if true */
+  filled: boolean,
 }
 
 /**
-  Similar to a [standard checkbox](http://www.w3schools.com/tags/att_input_checked.asp).
+  The checkbox component is used like a normal react checkbox.
 */
 class Checkbox extends Component {
 
   static defaultProps = {
-    value: true,
     label: '',
+    disabled: false,
+    filled: false,
   };
 
   props: Props;
 
-  handleChange = (e: any) => {
-    console.log('ok');
+  handleChange = () => {
     if (this.props.onChange) {
-      this.props.onChange(e.target.checked ? this.props.value : null);
+      this.props.onChange(!this.props.checked);
     }
   }
 
   render() {
+    const checkboxClasses = classNames({
+      'filled-in': this.props.filled,
+    });
+
     return (
-      <span>
-        <input type="checkbox" checked={this.props.checked} onChange={this.handleChange} />
-        <label>{this.props.label}</label>
+      <span onClick={this.handleChange} style={{position: 'relative'}}>
+        <input type="checkbox" className={checkboxClasses} checked={this.props.checked} onChange={() => {}} />
+        <label>{this.props.label} <Ink style={{ width: '50px', height: '50px', top: '-15px', left: '-15px' }} background={false} /></label>
       </span>
     );
   }
