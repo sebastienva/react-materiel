@@ -5,7 +5,7 @@ import sinon from 'sinon';
 
 import Button from './Button';
 
-describe('<Button />', function () {
+describe('<Button/>', function () {
   it('should render a raised button', () => {
     const wrapper = shallow(<Button>Test</Button>);
     expect(wrapper.find('.btn').length).to.equal(1);
