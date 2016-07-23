@@ -18,7 +18,7 @@ type Props = {
   /** Callback fired when a search is requested. This callback is already debounced to limit request */
   onSearch: (value: string) => void,
   /** Callback fired when an option is selected */
-  onChange: (value: any) => void,
+  onChange?: (value: any) => void,
   /** Debounce search */
   debounce: number,
   /** Value of the autocomplete field */
