@@ -52,7 +52,7 @@ class Button extends Component {
 
     return (
       <span className={`${buttonClasses} ${this.props.className}`} onClick={this.props.onClick}>
-        {this.props.children} {ink}
+        {this.props.children}{ink}
       </span>
     );
   }
