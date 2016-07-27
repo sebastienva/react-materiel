@@ -14,6 +14,7 @@ import ButtonDemo from './Button/ButtonDemo';
 import CardDemo from './Card';
 import ModalDemo from './Modal';
 import CheckboxDemo from './Checkbox';
+import PaginationDemo from './Pagination';
 
 render((
   <Router history={hashHistory}>
@@ -30,7 +31,7 @@ render((
       <Route path="/card" component={CardDemo} />
       <Route path="/modal" component={ModalDemo} />
       <Route path="/checkbox" component={CheckboxDemo} />
-
+      <Route path="/pagination" component={PaginationDemo} />
     </Route>
   </Router>
 ), document.getElementById('root'));
