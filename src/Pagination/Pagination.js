@@ -11,7 +11,7 @@ type Props = {
   /** Number of pages */
   totalPage: number,
   /** Callback fired when the page is changed */
-  onChange: (page: number) => void,
+  onChange?: (page: number) => void,
 };
 
 /**
@@ -40,18 +40,6 @@ class Pagination extends Component {
     if (prevPage >= 1) {
       this.props.onChange(prevPage);
     }
-  }
-
-  addPage(page: number) {
-    return (
-      <PaginationPage
-        key={page}
-        page={page}
-        active={this.props.currentPage === page}
-        onClick={this.handlePageClick}
-      ><a>{page}<Ink /></a>
-      </PaginationPage>
-    );
   }
 
   render() {
@@ -105,12 +93,19 @@ class Pagination extends Component {
     const pagesItems = [];
     pages.forEach((pageNum) => {
       if (prevNum + 1 !== pageNum) {
-        pagesItems.push('...');
+        pagesItems.push(<li key={pagesItems.length} className="filler">...</li>);
       }
+      pagesItems.push(
+        <PaginationPage
+          key={pagesItems.length}
+          page={pageNum}
+          active={this.props.currentPage === pageNum}
+          onClick={this.handlePageClick}
+        ><a>{pageNum}<Ink /></a></PaginationPage>
+      );
+      // save page for comparaison
       prevNum = pageNum;
-      pagesItems.push(this.addPage(pageNum));
     });
-
 
     return (
       <ul className="pagination">
@@ -118,8 +113,8 @@ class Pagination extends Component {
           <a><i className="material-icons">chevron_left</i><Ink /></a>
         </li>
         {pagesItems}
-        <li className={nextClasses}>
-          <a onClick={this.handleNext}><i className="material-icons">chevron_right</i><Ink /></a>
+        <li className={nextClasses} onClick={this.handleNext}>
+          <a><i className="material-icons">chevron_right</i><Ink /></a>
         </li>
       </ul>
     );

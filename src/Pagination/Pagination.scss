@@ -2,6 +2,12 @@
   li {
     position: relative;
     cursor: pointer;
+
+    &.filler {
+      margin: 0;
+      padding: 0;
+      cursor: default;
+    }
   }
 
   .disabled {
