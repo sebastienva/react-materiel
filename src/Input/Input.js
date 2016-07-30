@@ -28,8 +28,13 @@ type State = {
 }
 
 /**
-  This component works like a (standard input)[http://www.w3schools.com/tags/tag_input.asp].
+  This component works like a [standard input](http://www.w3schools.com/tags/tag_input.asp).
   Differences come from label/error.
+
+  Usage :
+```html
+<input type="text" value={value} onChange={onChange} />
+```
 */
 class Input extends Component {
 
