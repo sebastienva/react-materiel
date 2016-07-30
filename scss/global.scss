@@ -2,40 +2,14 @@ html {
   font-size: 16px;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
 body.modal-open {
   position: static;
   height: auto;
   overflow: hidden;
 }
 
-main {
-  padding-left: 240px;
-  padding-top: 50px;
-  .container {
-    min-height: 600px;
-    padding-bottom: 40px;
-  }
-}
-
-input {
-  height: 2rem !important;
-  line-height: 2rem !important;
-}
-
-input:not([type=checkbox]).validate + label {
-  margin-top: -10px;
-}
-
-.input-field {
-  margin-bottom: 10px;
-}
-
 .input-field .label-field {
-  top: 0.4rem;
+  top: $input-top;
 }
 
 .footer {
@@ -50,7 +24,8 @@ input:not([type=checkbox]).validate + label {
     height: 44px;
   }
   a.active {
-    background-color: rgba(0,0,0,.1);
+    background-color: $primary-color;
+    color: #fff;
   }
 }
 

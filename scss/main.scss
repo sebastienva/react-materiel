@@ -1,5 +1,17 @@
 $roboto-font-path: "../node_modules/materialize-css/fonts/roboto/";
+
+@import "../node_modules/materialize-css/sass/components/color";
+
+$primary-color: color("indigo", "lighten-2") !default;
+$input-focus-color: color("indigo", "darken-1") !default;
+$input-margin: 0 0 20px 0 !default;
+$input-height: 2rem;
+$input-top: 0.4rem;
+
 @import "../node_modules/materialize-css/sass/materialize.scss";
+
+
+@import "demo"; // todo : move
 
 @import "global";
 @import "../src/Select/Select";
