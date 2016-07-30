@@ -76,6 +76,7 @@ export class Select extends Component {
       }
     } else {
       this.hideDropdown();
+      document.body.classList.remove('modal-open');  // "unlock" the screen
       currentVal = val;
     }
     // trigger change
@@ -159,7 +160,7 @@ export class Select extends Component {
     // final render
     return (
       <div className="select-wrapper" onFocus={this.handleFocus.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
-        <span className="caret">▼</span>
+        <span className="caret material-icons">arrow_drop_down</span>
         <label className={labelClasses}>{this.props.label}</label>
         <input type="text" className={dropDownClasses} readOnly value="" />
         <span className="select-preview">
