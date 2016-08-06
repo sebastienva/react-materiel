@@ -50,7 +50,7 @@ export class Select extends Component {
     this.setState({ active: true });
   }
 
-  handleKeyDown = (e) => {
+  handleKeyDown = (e: any) => {
     if (e.keyCode === 9) { // simulate lose of focus when tab is pressed
       this.handleClickOutside();
     }
@@ -63,10 +63,10 @@ export class Select extends Component {
     }
   }
 
-  handleOptionSelected = (val) => {
+  handleOptionSelected = (val: any) => {
     let currentVal = this.props.value;
 
-    if (this.props.multiple) {
+    if (this.props.multiple && currentVal) {
       const index: number = currentVal.indexOf(val);
 
       if (index === -1) {
