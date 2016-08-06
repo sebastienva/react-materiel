@@ -46,3 +46,11 @@ ul.side-nav li {
   -o-user-select: none;
   user-select: none;
 }
+
+.dropdown-content li > span  {
+  color: inherit;
+}
+
+.dropdown-content li > span > label {
+  color: inherit;;
+}
