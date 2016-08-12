@@ -7,6 +7,7 @@ $input-focus-color: color("indigo", "darken-1") !default;
 $input-margin: 0 0 20px 0 !default;
 $input-height: 2rem;
 $input-top: 0.4rem;
+$text-color: rgba(0,0,0,0.8);
 
 @import "../node_modules/materialize-css/sass/materialize.scss";
 

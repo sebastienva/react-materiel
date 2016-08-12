@@ -1,5 +1,6 @@
 html {
   font-size: 16px;
+  color: $text-color;
 }
 
 body.modal-open {
@@ -48,9 +49,9 @@ ul.side-nav li {
 }
 
 .dropdown-content li > span  {
-  color: inherit;
+  color: $text-color;
 }
 
 .dropdown-content li > span > label {
-  color: inherit;;
+  color: $text-color;
 }
