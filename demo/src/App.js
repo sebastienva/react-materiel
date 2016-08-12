@@ -19,6 +19,7 @@ export default class App extends Component {
     'Modal',
     'Checkbox',
     'Pagination',
+    'Dropdown',
   ];
 
   render() {

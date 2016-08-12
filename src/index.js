@@ -11,3 +11,6 @@ export Card from './Card/Card';
 export Modal from './Modal/Modal';
 export Checkbox from './Checkbox/Checkbox';
 export Pagination from './Pagination/Pagination';
+export Dropdown from './Dropdown/Dropdown';
+export DropdownContent from './Dropdown/DropdownContent';
+export DropdownItem from './Dropdown/DropdownItem';
