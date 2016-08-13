@@ -14,3 +14,4 @@ export Pagination from './Pagination/Pagination';
 export Dropdown from './Dropdown/Dropdown';
 export DropdownContent from './Dropdown/DropdownContent';
 export DropdownItem from './Dropdown/DropdownItem';
+export Breadcrumb from './Breadcrumb/Breadcrumb';
