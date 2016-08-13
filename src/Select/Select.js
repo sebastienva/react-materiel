@@ -9,7 +9,7 @@ type Props = {
   /** Value of the select field */
   value: ?any,
   /** Specifies that multiple options can be selected at once */
-  multiple: ?boolean,
+  multiple: boolean,
   /** Event call when the value is changed */
   onChange: ?() => void,
   /** `option` elements */
@@ -17,7 +17,9 @@ type Props = {
   /** Label of the field */
   label: string,
   /** Disable ink animation */
-  noInk: ?boolean,
+  noInk: boolean,
+  /** Force a specific tabIndex */
+  tabIndex: string,
 }
 
 type State = {
@@ -27,9 +29,16 @@ type State = {
 
 /**
   This component works like a [standard select](http://www.w3schools.com/tags/tag_select.asp).
-  You should be able to use it exactly the same way.
+  You should be able to use to a similar  way.
+  Todo : hidden input ?
 */
 export class Select extends Component {
+
+  static defaultProps = {
+    multiple: false,
+    noInk: false,
+    tabIndex: '1',
+  };
 
   props: Props;
   state: State;
@@ -63,7 +72,7 @@ export class Select extends Component {
     }
   }
 
-  handleOptionSelected = (val: any) => {
+  handleOptionSelected = (val: number | string) => {
     let currentVal = this.props.value;
 
     if (this.props.multiple && currentVal) {
@@ -80,7 +89,9 @@ export class Select extends Component {
       currentVal = val;
     }
     // trigger change
-    this.props.onChange(currentVal);
+    if (this.props.onChange) {
+      this.props.onChange(currentVal);
+    }
   }
 
   hideDropdown() {
@@ -91,7 +102,7 @@ export class Select extends Component {
     }, 200);
   }
 
-  isValueSelected(val): boolean {
+  isValueSelected(val: any): boolean {
     let res: boolean;
     if (this.props.multiple && this.props.value) {
       res = this.props.value.indexOf(val) !== -1;
@@ -101,7 +112,7 @@ export class Select extends Component {
     return res;
   }
 
-  addOption(element, options, preview) {
+  addOption(element: any, options : any, preview: any) {
     const optionActive = this.isValueSelected(element.props.value);
 
     if (optionActive) {
@@ -128,9 +139,10 @@ export class Select extends Component {
 
   render() {
     // classes
-    const dropDownClasses: string = classNames({
-      'select-dropdown': true,
-      active: this.state.active,
+    const isValue: boolean = (this.props.multiple && this.props.value) ? this.props.value.length : this.props.value != null;
+    const wrapperClasses: string = classNames({
+      'select-wrapper': true,
+      active: isValue,
     });
     const dropDownContentClasses: string = classNames({
       'dropdown-content select-dropdown multiple-select-dropdown': true,
@@ -138,7 +150,7 @@ export class Select extends Component {
       hideAnimation: this.state.hideAnimation,
     });
     const labelClasses: string = classNames({
-      active: (this.props.multiple && this.props.value) ? this.props.value.length : this.props.value != null,
+      active: isValue,
       'label-field': true,
     });
 
@@ -159,10 +171,15 @@ export class Select extends Component {
 
     // final render
     return (
-      <div className="select-wrapper" onFocus={this.handleFocus.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
+      <div
+        className={wrapperClasses}
+        onClick={this.handleFocus.bind(this)}
+        tabIndex={this.props.tabIndex}
+        onFocus={this.handleFocus.bind(this)}
+        onKeyDown={this.handleKeyDown.bind(this)}
+      >
         <span className="caret material-icons">arrow_drop_down</span>
         <label className={labelClasses}>{this.props.label}</label>
-        <input type="text" className={dropDownClasses} readOnly value="" />
         <span className="select-preview">
           {preview.map((item) =>
             <span key={item} className="preview-item">{item}</span>

@@ -23,13 +23,18 @@
 .select-dropdown {
   max-height: 250px;
   overflow: auto;
+
+  & input {
+    border: 1px solid;
+  }
 }
 
 .select-preview {
-  position: absolute;
-  top: 5px;
+  position: relative;
+  top: 8px;
   height: 25px;
-  overflow: hidden;
+  width: calc(100% - 50px);
+  display: inline-block;
 
   .preview-item{
     &:after {
@@ -38,6 +43,15 @@
     &:last-child:after {
       content: "";
     }
+  }
+}
+
+.select-wrapper {
+  border-bottom: 1px solid;
+  outline: none;
+  cursor: pointer;
+  &.active {
+    padding-bottom: 7px;
   }
 }
 
