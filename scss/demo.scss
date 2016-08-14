@@ -1,11 +1,10 @@
 
 main {
-  padding-left: 240px;
-  >.container {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 85%;
-  }
+  padding-left: 280px;
+  padding-top: 20px;
+  min-height: 500px;
+  padding-right: 40px;
+
 }
 
 code {
@@ -17,4 +16,16 @@ code {
 h2 {
   font-size: 24px;
   margin-bottom: 10px;
+}
+
+header {
+  padding-left: 240px;
+
+  > nav {
+    padding-left: 20px;
+  }
+}
+
+footer {
+  padding-left: 240px;
 }

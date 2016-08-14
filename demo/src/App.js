@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Ink from 'react-ink';
 
+import { Breadcrumb } from '../../src';
+
 import '../../scss/main.scss';
 
 export default class App extends Component {
@@ -23,6 +25,9 @@ export default class App extends Component {
   ];
 
   render() {
+    let path = this.props.location.pathname;
+    path = path.charAt(1).toUpperCase() + path.slice(2);
+
     return (
       <div>
         <header>
@@ -33,15 +38,23 @@ export default class App extends Component {
               </li>
             )}
           </ul>
+          <Breadcrumb>
+            <span>Components</span>
+            <span>{path}</span>
+          </Breadcrumb>
         </header>
         <main>
-          <div className="container">
-            {this.props.children}
-          </div>
-          <div className="footer">
-
-          </div>
+          {this.props.children}
         </main>
+
+        <footer className="page-footer">
+
+          <div className="footer-copyright">
+            <div className="container">
+              Preview version
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }
