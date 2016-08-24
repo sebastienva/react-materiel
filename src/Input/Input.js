@@ -33,7 +33,7 @@ type State = {
 
   Usage :
 ```html
-<input type="text" value={value} onChange={onChange} />
+  <input type="text" value={value} onChange={onChange} />
 ```
 */
 class Input extends Component {
@@ -52,7 +52,7 @@ class Input extends Component {
     super(props);
 
     this.state = {
-      active: (this.props.value !== ''),
+      active: false,
     };
   }
 
@@ -65,11 +65,10 @@ class Input extends Component {
 
   handleBlur = (e: any) => {
     // keep label active if there an error, the error is :after it
-    if (this.props.value === '' && this.props.error == null) {
-      this.setState({
-        active: false,
-      });
-    }
+    this.setState({
+      active: false,
+    });
+
 
     if (this.props.onBlur) {
       this.props.onBlur(e);
@@ -102,43 +101,42 @@ class Input extends Component {
       ...other,
     } = this.props;
 
-    const labelClasses = classNames({
-      active: this.state.active || value,
-      'label-field': true,
-    });
-    const inputClasses = classNames({
-      'validate invalid': (error != null),
-    });
-
-    let labelTag = '';
-    let placeholder = '';
-    if (float) {
-      labelTag = <label data-error={error} className={labelClasses}>{label}</label>;
-    } else {
-      placeholder = label;
-    }
+    const containerClasses = classNames({
+      'mdl-textfield': true,
+      'mdl-textfield--floating-label': this.props.float,
+      'is-focused': this.state.active,
+      'is-dirty': value !== '',
+      'is-disabled': this.props.disabled,
+      'is-invalid': error != null,
+    })
 
     let characterCounter = '';
     if (length) {
-      characterCounter = <span className="character-counter">{value.length} / {length}</span>;
+      characterCounter = <span className="mdl-textfield__counter">{value.length} / {length}</span>;
+    }
+
+    let errorTag = '';
+    if (error) {
+      errorTag = <span className="mdl-textfield__error">{error}</span>;
     }
 
     return (
-      <span onClick={this.handleClick}>
+
+      <div className={containerClasses}>
         <input
+          className="mdl-textfield__input"
           value={value}
           disabled={disabled}
-          className={inputClasses}
-          placeholder={placeholder}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           ref={(ref) => { this.input = ref; }}
           {...other}
         />
-        {labelTag}
+        <label className="mdl-textfield__label">{label}</label>
+        {errorTag}
         {characterCounter}
-      </span>
+      </div>
     );
   }
 }

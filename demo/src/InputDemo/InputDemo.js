@@ -42,24 +42,24 @@ class InputDemo extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="input-field col s6">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6-col">
             <Input value={this.state.firstName} float label="First name" onChange={this.handleFirstName} />
           </div>
 
-          <div className="input-field col s6">
+          <div className="mdl-cell mdl-cell--6-col">
             <Input value={this.state.lastName} label="Last name" length={10} onChange={this.handleLastName} />
           </div>
         </div>
 
-        <div className="row">
-          <div className="input-field col s6">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6-col">
             <Input value={this.state.email} float type="email" label="E-mail" error="error" onChange={this.handleEmail} />
           </div>
         </div>
 
-        <div className="row">
-          <div className="input-field col s6">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6-col">
             <Input value={this.state.disable} float type="email" label="Disabled" disabled onChange={this.handleDisable} />
           </div>
         </div>
