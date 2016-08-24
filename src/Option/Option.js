@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import Ink from 'react-ink';
+import Checkbox from '../Checkbox/Checkbox';
 
 type Props = {
   children: Node,
@@ -12,6 +13,7 @@ type Props = {
   preview: ?string,
   noInk: ?boolean,
 };
+
 
 /**
   For internal use.
@@ -35,8 +37,8 @@ class Option extends Component {
 
   render() {
     const optionClasses: string = classNames({
-      'active selected': this.props.active,
-      'optgroup-option': true,
+      'is-selected': this.props.active,
+      'mdl-menu__item': true,
     });
 
     let option = '';
@@ -44,7 +46,7 @@ class Option extends Component {
     if (this.props.multiple) {
       option = (
         <span>
-          <input type="checkbox" checked={this.props.active} readOnly />
+          <Checkbox checked={this.props.active} />
           <label>{this.props.children}</label>
         </span>
       );
@@ -58,7 +60,7 @@ class Option extends Component {
     }
 
     return (
-      <li onClick={this.handleSelect} className={optionClasses}>
+      <li onClick={this.handleSelect} className={optionClasses} tabIndex="1">
         {option}{ink}
       </li>
     );
