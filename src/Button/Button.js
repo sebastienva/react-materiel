@@ -6,11 +6,13 @@ import Ink from 'react-ink';
 
 type Props = {
   /** Button content */
-  children: Node,
+  children?: Node,
   /** Disable ink effect */
   noInk: boolean,
   /** Material type of button */
   type: 'raised' | 'flat' | 'floating',
+  /** Button color */
+  color?: 'colored' | 'accent',
   /** Large button */
   large: boolean,
   /** Disable the button */
@@ -38,11 +40,11 @@ class Button extends Component {
 
   render() {
     const buttonClasses: string = classNames({
-      btn: this.props.type === 'raised' && this.props.large === false,
-      'btn-flat': this.props.type === 'flat',
-      'btn-floating': this.props.type === 'floating',
-      'btn-large': this.props.large || this.props.type === 'floating',
-      disabled: this.props.disabled,
+      'mdl-button': true,
+      'mdl-button--raised': this.props.type === 'raised',
+      'mdl-button--fab mdl-button--mini-fab': this.props.type === 'floating',
+      'mdl-button--colored': this.props.color === 'colored',
+      'mdl-button--accent': this.props.color === 'accent',
     });
 
     let ink = '';
@@ -51,9 +53,9 @@ class Button extends Component {
     }
 
     return (
-      <span className={`${buttonClasses} ${this.props.className}`} onClick={this.props.onClick}>
+      <button className={buttonClasses} disabled={this.props.disabled}>
         {this.props.children}{ink}
-      </span>
+      </button>
     );
   }
 }

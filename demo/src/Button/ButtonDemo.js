@@ -10,7 +10,7 @@ class ButtonDemo extends Component {
       <div>
         <h4>Raised</h4>
         <Button>Raised button</Button>
-        <Button className="green">Green button</Button>
+        <Button color="colored">Colored button</Button>
 
         <h4>Large</h4>
         <Button large>Large button</Button>
@@ -19,7 +19,7 @@ class ButtonDemo extends Component {
         <Button type="flat">Flat button</Button>
 
         <h4>Floating</h4>
-        <Button type="floating">FB</Button>
+        <Button type="floating">+</Button>
 
         <h4>Disabled</h4>
         <Button disabled>Disabled</Button>
