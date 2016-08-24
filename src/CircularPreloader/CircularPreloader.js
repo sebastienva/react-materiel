@@ -1,11 +1,10 @@
 // @flow
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 type Props = {
-  /** Size of the preloader */
-  size: 'small' | 'medium' | 'big',
-  /** Color of the preloader */
-  color: 'red' | 'blue' | 'yellow' | 'green' | 'none',
+  /** Single color */
+  singleColor: boolean,
 }
 
 /**
@@ -14,27 +13,40 @@ type Props = {
 class CircularPreloader extends Component {
 
   static defaultProps = {
-    size: 'medium',
-    color: 'none',
+    singleColor: false,
   };
 
   props: Props;
 
   render() {
-    return (
-      <span>
-        <div className={`preloader-wrapper active ${this.props.size}`}>
-          <div className={`spinner-layer spinner-${this.props.color}-only`}>
-            <div className="circle-clipper left">
-              <div className="circle"></div>
-            </div><div className="gap-patch">
-              <div className="circle"></div>
-            </div><div className="circle-clipper right">
-              <div className="circle"></div>
-            </div>
+    let spinners = [];
+    for (let i = 1; i <= 4; i++) {
+      spinners.push(
+        <div className={`mdl-spinner__layer mdl-spinner__layer-${i}`}>
+          <div className="mdl-spinner__circle-clipper mdl-spinner__left">
+            <div className="mdl-spinner__circle"></div>
+          </div>
+          <div className="mdl-spinner__gap-patch">
+            <div className="mdl-spinner__circle"></div>
+          </div>
+          <div className="mdl-spinner__circle-clipper mdl-spinner__right">
+            <div className="mdl-spinner__circle"></div>
           </div>
         </div>
-      </span>
+      );
+    }
+
+    let spinnerClasses = classNames({
+      'mdl-spinner': true,
+      'mdl-spinner--single-color': this.props.singleColor,
+      'is-active': true,
+      'is-upgraded': true,
+    });
+
+    return (
+      <div className={spinnerClasses}>
+        {spinners}
+      </div>
     );
   }
 }

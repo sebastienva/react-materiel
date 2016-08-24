@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 type Props = {
-  /** Progress percentage of the bar */
-  progress: ?number
+  /** Progress percentage  */
+  progress?: number,
+  /** Buffer percentage */
+  buffer?: number,
 }
 
 /**
@@ -14,27 +16,22 @@ class LinearPreloader extends Component {
 
   props: Props;
 
-  static defaultProps = {
-    progress: null,
-  }
-
   render() {
     const barClasses: string = classNames({
-      determinate: this.props.progress !== null,
-      indeterminate: this.props.progress === null,
+      'mdl-progress': true,
+      'mdl-progress__indeterminate': this.props.progress === undefined,
     });
 
-    const barStyles: Object = {};
-    if (this.props.progress) {
-      barStyles.width = `${this.props.progress.toString()}%`;
-    }
+    const progressWidth: number = this.props.progress ? this.props.progress : 0;
+    const bufferWidth: number = this.props.buffer ? (100 - this.props.buffer) : 100;
+    const auxWidth: number = this.props.buffer ? this.props.buffer : 0;
 
     return (
-      <span>
-        <div className="progress">
-          <div className={barClasses} style={barStyles}></div>
-        </div>
-      </span>
+      <div className={barClasses}>
+        <div className="progressbar bar bar1" style={{ width: `${progressWidth.toString()}%` }}></div>
+        <div className="bufferbar bar bar2" style={{ width: `${bufferWidth.toString()}%` }}></div>
+        <div className="auxbar bar bar3" style={{ width: `${auxWidth.toString()}%` }}></div>
+      </div>
     );
   }
 }

@@ -7,19 +7,10 @@ const PreloaderDemo = () =>
     <h4>Circular</h4>
     <div className="row">
       <div className="col s2">
-        <CircularPreloader size="big" color="red" />
+        <CircularPreloader />
       </div>
       <div className="col s2">
-        <CircularPreloader size="medium" color="yellow" />
-      </div>
-      <div className="col s2">
-        <CircularPreloader size="medium" color="none" />
-      </div>
-      <div className="col s2">
-        <CircularPreloader size="medium" color="blue" />
-      </div>
-      <div className="col s2">
-        <CircularPreloader size="small" color="green" />
+        <CircularPreloader singleColor />
       </div>
     </div>
 
@@ -31,6 +22,11 @@ const PreloaderDemo = () =>
     <h4>Linear determinate</h4>
     <div>
       <LinearPreloader progress={70} />
+    </div>
+
+    <h4>Linear buffer</h4>
+    <div>
+      <LinearPreloader progress={30} buffer={15} />
     </div>
 
   </div>);
