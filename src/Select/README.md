@@ -2,7 +2,7 @@
 ========
 
 This component works like a [standard select](http://www.w3schools.com/tags/tag_select.asp).
-  You should be able to use to a similar way.
+  You should be able to use it exactly the same way.
   Todo : hidden input ?
 
 Props
