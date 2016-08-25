@@ -44,9 +44,11 @@ class Pagination extends Component {
 
   render() {
     const prevClasses = classNames({
+      'mdl-button': true,
       disabled: this.props.currentPage === 1,
     });
     const nextClasses = classNames({
+      'mdl-button': true,
       disabled: this.props.currentPage === this.props.totalPage,
     });
 

@@ -1,12 +1,23 @@
 .pagination {
+
+  list-style-type: none;
+
   li {
     position: relative;
     cursor: pointer;
+    min-width: inherit;
+    padding: 0px 12px;
+    font-size: 16px;
 
     &.filler {
       margin: 0;
       padding: 0;
       cursor: default;
+      display: inline-block;
+    }
+
+    &.is-active {
+      background: #eee;
     }
   }
 
