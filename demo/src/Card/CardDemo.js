@@ -10,6 +10,10 @@ class CardDemo extends Component {
       <div>
         <h3>Simple card</h3>
         <Card>
+          Test<br />
+          Card <br />
+          content <br />
+          ok <br />
         </Card>
       </div>
     );
