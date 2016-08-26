@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import classNames from 'classnames';
+import onClickOutside from 'react-onclickoutside';
+
+import { Button } from '../../src';
 
 type Props = {
   /** Button content */
@@ -14,7 +16,7 @@ type Props = {
 }
 
 /**
-  todo
+  Component based on native dialog
 */
 class Modal extends Component {
 
@@ -25,48 +27,44 @@ class Modal extends Component {
 
   props: Props;
 
+  dialog;
+
   componentDidMount() {
-    document.addEventListener('keyup', this.handleKeyUp);
+    this.dialog.onclose = () => {
+      if (this.props.onClose) {
+        this.props.onClose();
+      }
+    };
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('keyup', this.handleKeyUp);
-  }
-
-  handleKeyUp = (e: any) => {
-    if (e.keyCode === 27 && this.props.onClose && this.props.open) {
+  handleClickOutside = () => {
+    if (this.props.onClose && this.props.open) {
       this.props.onClose();
     }
   }
 
-  render() {
-    let modal = '';
-
-    if (this.props.open) {
-      modal = (<div>
-        <div className="modal open">
-          <div className="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div className="modal-footer">
-            <a className="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-          </div>
-        </div>
-        <div
-          className="lean-overlay"
-          style={{ zIndex: 1002, display: 'block', opacity: 0.5 }}
-          onClick={this.props.onClose}
-        ></div>
-      </div>);
+  componentWillUpdate = (nextProps) => {
+    if (nextProps.open && !this.props.open) {
+      this.dialog.showModal();
     }
+  }
 
+  render() {
     return (
       <div>
-        {modal}
+        <dialog className="mdl-dialog" ref={(ref) => { this.dialog = ref; }}>
+          <h3 className="mdl-dialog__title">Title</h3>
+          <div className="mdl-dialog__content">
+            {this.props.children}
+          </div>
+          <div className="mdl-dialog__actions">
+            <Button type="flat" onClick={this.props.onClose}>Close</Button>
+            <Button type="flat">Disabled action</Button>
+          </div>
+        </dialog>
       </div>
     );
   }
 }
 
-export default Modal;
+export default onClickOutside(Modal);
