@@ -7,6 +7,10 @@ body.modal-open {
 /* for react-ink compatibilty */
 .mdl-navigation__link {
   position: relative;
+
+  &.is-active {
+    font-weight: 700;
+  }
 }
 
 .ink {

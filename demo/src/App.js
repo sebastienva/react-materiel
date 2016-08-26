@@ -35,7 +35,7 @@ export default class App extends Component {
         <div className="mdl-layout__drawer">
           <nav className="mdl-navigation">
             {App.COMPONENTS.map((component) =>
-              <Link to={component.toLowerCase()} className="mdl-navigation__link" activeClassName="is-selected">
+              <Link to={component.toLowerCase()} className="mdl-navigation__link" activeClassName="is-active">
               <Ink />{component}
               </Link>
             )}
