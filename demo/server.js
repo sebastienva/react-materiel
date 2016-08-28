@@ -6,6 +6,8 @@ import { match, RouterContext } from 'react-router';
 
 import { routes } from './routes';
 
+const port = process.env.PORT || 8080;
+
 const app = express();
 
 app.use(express.static('public'));
@@ -39,7 +41,7 @@ app.get('*', (req, res) => {
 
 const server = http.createServer(app);
 
-server.listen(80);
+server.listen(port);
 server.on('listening', () => {
-  console.log('Listening on 80');
+  console.log('Listening on '+ port);
 });
