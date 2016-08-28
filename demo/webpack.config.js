@@ -19,25 +19,23 @@ module.exports = {
     colors: true,
     hot: true,
     historyApiFallback: true,
-    publicPath: '/dist/'
   },
 
    // Config for our build files
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
 
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './demo/src/index'
+    './client'
   ],
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
+    //new webpack.optimize.DedupePlugin(), todo : check dependencies
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
@@ -45,7 +43,12 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
-        include: [path.join(__dirname, 'src'), path.join(__dirname, 'demo')]
+        include: [
+          path.join(__dirname, '../src'),
+          path.join(__dirname, './src'),
+          path.join(__dirname, './client'),
+          path.join(__dirname, './routes')
+        ]
       },
       {
         test:   /\.css$/,

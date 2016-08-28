@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Ink from 'react-ink';
 
-import { Breadcrumb } from '../../src';
-
-import 'material-design-lite/material.min.css';
-import '../../scss/main.scss';
+if (process.browser) {
+  require('../../scss/main.scss');
+}
 
 export default class App extends Component {
 
@@ -35,7 +34,7 @@ export default class App extends Component {
         <div className="mdl-layout__drawer">
           <nav className="mdl-navigation">
             {App.COMPONENTS.map((component) =>
-              <Link to={component.toLowerCase()} className="mdl-navigation__link" activeClassName="is-active">
+              <Link key={component.toLowerCase()} to={component.toLowerCase()} className="mdl-navigation__link" activeClassName="is-active">
               <Ink />{component}
               </Link>
             )}
