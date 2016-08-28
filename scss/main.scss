@@ -1,16 +1,17 @@
-//@import "../node_modules/materialize-css/sass/materialize.scss";
+@import "../node_modules/material-design-lite/src/_variables.scss";
+
+$image_path: '../node_modules/material-design-lite/images' !default;
+
+@import "../node_modules/material-design-lite/src/material-design-lite.scss";
 
 
-@import "demo"; // todo : move
+@import "demo.scss"; // todo : move
 
-@import "global";
-@import "../src/Select/Select";
-//@import "../src/Autocomplete/Autocomplete";
-//@import "../src/Chip/Chip";
-//@import "../src/Modal/Modal";
-@import "../src/Input/Input";
-@import "../src/Switch/Switch";
-@import "../src/Pagination/Pagination";
+@import "global.scss";
+@import "../src/Select/Select.scss";
+@import "../src/Input/Input.scss";
+@import "../src/Switch/Switch.scss";
+@import "../src/Pagination/Pagination.scss";
 
 @font-face {
   font-family: 'Material Icons';
