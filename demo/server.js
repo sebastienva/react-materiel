@@ -39,7 +39,7 @@ app.get('*', (req, res) => {
 
 const server = http.createServer(app);
 
-server.listen(3003);
+server.listen(80);
 server.on('listening', () => {
-  console.log('Listening on 3003');
+  console.log('Listening on 80');
 });
