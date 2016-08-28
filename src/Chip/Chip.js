@@ -35,11 +35,9 @@ class Chip extends Component {
     }
 
     return (
-      <div className="chip">
-        {this.props.children}
-        {closeIcon}
-      </div>
-
+      <span className="mdl-chip">
+        <span className="mdl-chip__text">{this.props.children}</span>
+      </span>
     );
   }
 }

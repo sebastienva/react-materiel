@@ -41,7 +41,8 @@ class Checkbox extends Component {
 
   render() {
     const checkboxClasses = classNames({
-      'filled-in': this.props.filled,
+      'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded': true,
+      'is-checked': this.props.checked,
     });
 
     let ink = '';
@@ -50,10 +51,12 @@ class Checkbox extends Component {
     }
 
     return (
-      <span onClick={this.handleChange} style={{position: 'relative'}}>
-        <input type="checkbox" className={checkboxClasses} checked={this.props.checked} onChange={() => {}} />
-        <label>{this.props.label}{ink}</label>
-      </span>
+      <label className={checkboxClasses} style={{ position: 'relative', 'width': 'auto' }}>
+        <input type="checkbox" className="mdl-checkbox__input" checked={this.props.checked} onChange={this.handleChange} />
+        <span className="mdl-checkbox__label">{this.props.label}</span>
+        <span className="mdl-checkbox__focus-helper"></span>
+        <span className="mdl-checkbox__box-outline"><span className="mdl-checkbox__tick-outline"></span></span>
+      </label>
     );
   }
 }

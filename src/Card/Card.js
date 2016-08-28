@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router';
+import Ink from 'react-ink';
 
 import Button from '../Button/Button';
 
@@ -25,15 +26,23 @@ class Card extends Component {
 
   render() {
     return (
-      <div className="card">
-        <div className="card-content">
-          <span className="card-title">Card Title</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+      <div className="mdl-card mdl-shadow--2dp">
+        <div className="mdl-card__title">
+          <h2 className="mdl-card__title-text">Welcome</h2>
         </div>
-        <div className="card-action">
-          <Button type="flat"><Link to="button">This is a link</Link></Button>
-          <Button type="flat">This is a link</Button>
+        <div className="mdl-card__supporting-text">
+          {this.props.children}
+        </div>
+        <div className="mdl-card__actions mdl-card--border">
+          <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Get Started
+          </a>
+        </div>
+        <div className="mdl-card__menu">
+          <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i className="material-icons">share</i>
+          </button>
+          <Ink style={{borderRadius: '50%', cursor: 'pointer'}}/>
         </div>
       </div>
     );

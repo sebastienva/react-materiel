@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 
+import Input from '../Input/Input';
 import Option from '../Option/Option';
 
 type Props = {
@@ -25,6 +26,8 @@ type Props = {
 type State = {
   active: boolean,
   hideAnimation: boolean,
+  menuHeight: number,
+  menuWidth: number,
 };
 
 /**
@@ -42,6 +45,8 @@ export class Select extends Component {
 
   props: Props;
   state: State;
+  menu: Node;
+  preview: Node;
 
   handleOptionSelected: () => void;
 
@@ -51,7 +56,16 @@ export class Select extends Component {
     this.state = {
       active: false,
       hideAnimation: false,
+      menuHeight: 0,
+      menuWidth: 0,
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      menuHeight: this.menu.offsetHeight,
+      menuWidth: this.preview.offsetWidth,
+    });
   }
 
   handleFocus = () => {
@@ -67,7 +81,7 @@ export class Select extends Component {
 
   handleClickOutside = () => {
     if (this.state.active) {
-      this.hideDropdown();
+      this.setState({ active: false });
       document.body.classList.remove('modal-open');  // "unlock" the screen
     }
   }
@@ -140,18 +154,17 @@ export class Select extends Component {
   render() {
     // classes
     const isValue: boolean = (this.props.multiple && this.props.value) ? this.props.value.length : this.props.value != null;
+
     const wrapperClasses: string = classNames({
-      'select-wrapper': true,
-      active: isValue,
+      'mdl-menu__container': true,
+      'is-visible': this.state.active,
     });
-    const dropDownContentClasses: string = classNames({
-      'dropdown-content select-dropdown multiple-select-dropdown': true,
-      active: this.state.active,
-      hideAnimation: this.state.hideAnimation,
-    });
-    const labelClasses: string = classNames({
-      active: isValue,
-      'label-field': true,
+
+    const previewClasses: string = classNames({
+      'mdl-textfield': true,
+      'mdl-textfield--floating-label': true,
+      'is-dirty': isValue,
+      'is-focused': this.state.active,
     });
 
     // options + preview
@@ -160,7 +173,7 @@ export class Select extends Component {
 
     React.Children.map(this.props.children, (child) => {
       if (child.type === 'optgroup') {
-        options.push(<li className="optgroup" key={options.length}><span>{child.props.label}</span></li>);
+        options.push(<li className="mdl-menu__group" key={options.length}><span>{child.props.label}</span></li>);
         React.Children.map(child.props.children, (subChild) => {
           this.addOption(subChild, options, preview);
         });
@@ -171,23 +184,30 @@ export class Select extends Component {
 
     // final render
     return (
-      <div
-        className={wrapperClasses}
-        onClick={this.handleFocus.bind(this)}
-        tabIndex={this.props.tabIndex}
-        onFocus={this.handleFocus.bind(this)}
-        onKeyDown={this.handleKeyDown.bind(this)}
-      >
-        <span className="caret material-icons">arrow_drop_down</span>
-        <label className={labelClasses}>{this.props.label}</label>
-        <span className="select-preview">
-          {preview.map((item) =>
-            <span key={item} className="preview-item">{item}</span>
-          )}
-        </span>
-        <ul className={dropDownContentClasses}>
+      <div onClick={this.handleFocus}>
+        <div className={wrapperClasses}>
+          <div
+            className="mdl-menu__outline mdl-menu__outline-standard"
+            style={{ width: this.state.menuWidth, height: this.state.menuHeight }}
+          ></div>
+          <ul
+            className="mdl-menu"
+            style={{ clip: 'auto', width: this.state.menuWidth }}
+            ref={(ref) => { this.menu = ref; }}
+          >
           {options}
-        </ul>
+          </ul>
+        </div>
+        <div className={previewClasses} style={{ cursor: 'pointer' }} ref={(ref) => { this.preview = ref; }}>
+          <i className="material-icons" style={{ float: 'right' }}>arrow_drop_down</i>
+          <span className="mdl-textfield__input mdl-menu__preview">
+            {preview.map((item) =>
+              <span key={item}>{item}</span>
+            )}
+            &nbsp;
+          </span>
+          <label className="mdl-textfield__label">{this.props.label}</label>
+        </div>
       </div>
     );
   }

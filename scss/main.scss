@@ -1,23 +1,25 @@
-$roboto-font-path: "../node_modules/materialize-css/fonts/roboto/";
-
-@import "../node_modules/materialize-css/sass/components/color";
-
-$primary-color: color("indigo", "lighten-2") !default;
-$input-focus-color: color("indigo", "darken-1") !default;
-$input-margin: 0 0 20px 0 !default;
-$input-height: 2rem;
-$input-top: 0.4rem;
-$text-color: rgba(0,0,0,0.8);
-
-@import "../node_modules/materialize-css/sass/materialize.scss";
+//@import "../node_modules/materialize-css/sass/materialize.scss";
 
 
 @import "demo"; // todo : move
 
 @import "global";
 @import "../src/Select/Select";
-@import "../src/Autocomplete/Autocomplete";
-@import "../src/Chip/Chip";
-@import "../src/Modal/Modal";
+//@import "../src/Autocomplete/Autocomplete";
+//@import "../src/Chip/Chip";
+//@import "../src/Modal/Modal";
 @import "../src/Input/Input";
+@import "../src/Switch/Switch";
 @import "../src/Pagination/Pagination";
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+       url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}

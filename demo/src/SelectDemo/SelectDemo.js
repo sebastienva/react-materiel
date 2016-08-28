@@ -47,39 +47,36 @@ class SelectDemo extends Component {
 
   render() {
     let options = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 20; i++) {
       options.push(<option key={i} value={i}>Test {i}</option>);
     }
 
     let optionsHtml = [];
     for (let i = 0; i < 5; i++) {
-      optionsHtml.push(<option key={i} value={i} preview={`Test ${i}`}>Test <h4>{i}</h4></option>);
+      optionsHtml.push(<option key={i} value={i} preview={`Test ${i}`}>Test <b>{i}</b></option>);
     }
 
     return (
       <div>
 
-        <h3>Simple</h3>
-        <div className="row">
-          <div className="input-field col s4">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6">
             <Select value={this.state.select1} label="Select an option" onChange={this.handleSelect1}>
               {options}
             </Select>
           </div>
         </div>
 
-        <h3>Multiple</h3>
-        <div className="row">
-          <div className="input-field col s4">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6">
             <Select value={this.state.select2} multiple label="Select some options" onChange={this.handleSelect2}>
               {options}
             </Select>
           </div>
         </div>
 
-        <h3>Group</h3>
-        <div className="row">
-          <div className="input-field col s4">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6">
             <Select value={this.state.select3} label="Select an option" onChange={this.handleSelect3}>
               <optgroup label="Group 1">
                 <option value={1}>Test 1</option>
@@ -93,9 +90,8 @@ class SelectDemo extends Component {
           </div>
         </div>
 
-        <h3>Group + Multiple</h3>
-        <div className="row">
-          <div className="input-field col s4">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6">
             <Select value={this.state.select4} label="Select some options" multiple onChange={this.handleSelect4}>
               <optgroup label="Group 1">
                 <option value={1}>Test 1</option>
@@ -109,9 +105,8 @@ class SelectDemo extends Component {
           </div>
         </div>
 
-        <h3>Templating</h3>
-        <div className="row">
-          <div className="input-field col s4">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6">
             <Select value={this.state.select5} label="Select an option" onChange={this.handleSelect5}>
               {optionsHtml}
             </Select>

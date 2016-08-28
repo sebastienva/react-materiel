@@ -22,7 +22,8 @@ class PaginationPage extends Component {
 
   render() {
     const pageClasses = classNames({
-      active: this.props.active,
+      'mdl-button': true,
+      'is-active': this.props.active,
     });
 
     return (

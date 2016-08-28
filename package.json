@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "material-design-lite": "^1.2.0",
     "materialize-css": "^0.97.6",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",

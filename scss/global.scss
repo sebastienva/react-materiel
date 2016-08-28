@@ -1,57 +1,22 @@
-html {
-  font-size: 16px;
-  color: $text-color;
-}
-
 body.modal-open {
   position: static;
   height: auto;
   overflow: hidden;
 }
 
-.input-field .label-field {
-  top: $input-top;
-}
-
-.footer {
-  background: #ccc;
-  height: 200px;
-}
-
-.side-nav  {
-  z-index: 100;
-  a {
-    line-height: 44px;
-    height: 44px;
-  }
-  a.active {
-    background-color: $primary-color;
-    color: #fff;
-  }
-}
-
 /* for react-ink compatibilty */
-ul.side-nav li {
+.mdl-navigation__link {
   position: relative;
+
+  &.is-active {
+    font-weight: 700;
+  }
 }
-.select-dropdown li {
-  position: relative;
-}
-.btn, .btn-flat {
-  position: relative;
-}
+
 .ink {
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
   user-select: none;
-}
-
-.dropdown-content li > span  {
-  color: $text-color;
-}
-
-.dropdown-content li > span > label {
-  color: $text-color;
 }

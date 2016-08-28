@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import Ink from 'react-ink';
 
 type Props = {
@@ -30,18 +31,24 @@ class Switch extends Component {
 
   handleChange = (e: any) => {
     if (this.props.onChange) {
-      this.props.onChange(e.target.checked ? this.props.value : null);
+      this.props.onChange(!this.props.checked, e);
     }
   }
 
   render() {
+    const switchClasses = classNames({
+      'mdl-switch': true,
+      'is-checked': this.props.checked,
+    });
+
     return (
-      <div className="switch" >
-        <label>
-          <span className="switch-on">{this.props.labelOff}</span>
-          <input type="checkbox" defaultChecked={this.props.checked} onChange={this.handleChange} />
-          <span className="lever"><Ink /></span>
-          <span className="switch-off">{this.props.labelOn}</span>
+      <div>
+        <label className={switchClasses} onClick={this.handleChange}>
+          <span className="mdl-switch__label"></span>
+          <div className="mdl-switch__track"></div>
+          <div className="mdl-switch__thumb">
+            <span className="mdl-switch__focus-helper"></span>
+          </div>
         </label>
       </div>
     );
