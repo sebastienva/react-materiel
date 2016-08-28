@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "coming",
   "scripts": {
-    "start": "cd demo && npm start",
+    "start": "cd demo && npm install && npm start",
     "build": "webpack",
     "dev": "cd demo && npm run dev",
     "lint": "eslint src",
