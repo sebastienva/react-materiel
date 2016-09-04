@@ -13,6 +13,7 @@ const app = express();
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
+app.set('views','./demo/views');
 
 app.get('*', (req, res) => {
   // routes is our object of React routes defined above

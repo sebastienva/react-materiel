@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "description": "coming",
   "scripts": {
-    "start": "webpack --config ./webpack.prod.config.js && cd demo && babel-node server.js",
-    "dev": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
-    "build": "webpack",
+    "start": "webpack --config ./webpack.prod.config.js && babel-node ./demo/server.js",
     "dev": "cd demo && npm run dev",
+    "build": "webpack",
     "lint": "eslint src",
     "test": "mocha test/helpers/browser.js src/**/**.js",
     "cover": "cross-env NODE_ENV=test nyc --reporter=html npm test",
@@ -75,6 +74,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "material-design-icons": "^3.0.1",
     "material-design-lite": "^1.2.0",
     "materialize-css": "^0.97.6",
     "react-ink": "^5.1.1",
