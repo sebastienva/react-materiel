@@ -13,8 +13,6 @@ type Props = {
   type: 'raised' | 'flat' | 'floating',
   /** Button color */
   color?: 'colored' | 'accent',
-  /** Large button */
-  large: boolean,
   /** Disable the button */
   disabled: boolean,
   /** React class, allow to customize the button */
@@ -53,7 +51,7 @@ class Button extends Component {
     }
 
     return (
-      <button className={buttonClasses} disabled={this.props.disabled}>
+      <button className={`${this.props.className} ${buttonClasses}`} disabled={this.props.disabled} onClick={this.props.onClick}>
         {this.props.children}{ink}
       </button>
     );
