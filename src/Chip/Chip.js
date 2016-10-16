@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 type Props = {
   /** Chip content */
@@ -25,18 +26,32 @@ class Chip extends Component {
     let closeIcon = '';
     if (this.props.onClose) {
       closeIcon = (
-        <span className="chip-close" onClick={this.handleCloseClick}>
-          <svg fill="#000000" height="16" viewBox="0 0 20 20" width="16">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-          </svg>
-        </span>
+        <a href="#" className="mdl-chip__action"><i className="material-icons">cancel</i></a>
       );
     }
 
+    let chipText = '';
+    let chipContact = '';
+
+    if (this.props.children instanceof Array) {
+      chipText = this.props.children.slice(0);
+      if (chipText[0].type.name === 'ChipContact') {
+        chipContact = chipText.shift();
+      }
+    } else {
+      chipText = this.props.children;
+    }
+
+    const chipClasses = classNames({
+      'mdl-chip': true,
+      'mdl-chip--contact': chipContact !== '',
+    });
+
     return (
-      <span className="mdl-chip">
-        <span className="mdl-chip__text">{this.props.children}</span>
+      <span className={chipClasses}>
+        {chipContact}
+        <span className="mdl-chip__text">{chipText}</span>
+        {closeIcon}
       </span>
     );
   }
