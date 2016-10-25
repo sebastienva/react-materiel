@@ -11,7 +11,7 @@
     "cover": "cross-env NODE_ENV=test nyc --reporter=html npm test",
     "coveralls": "cross-env NODE_ENV=test nyc --reporter=text-lcov npm test | coveralls",
     "doc": "./node_modules/.bin/react-docgen src/ | ./doc/buildDocs.sh",
-    "postinstall": "cd demo && npm install"
+    "postinstall": "cd demo && npm install && npm run build"
   },
   "repository": {
     "type": "git",
