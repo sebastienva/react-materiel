@@ -5,6 +5,7 @@ export Autocomplete from './Autocomplete/Autocomplete';
 export CircularPreloader from './CircularPreloader/CircularPreloader';
 export LinearPreloader from './LinearPreloader/LinearPreloader';
 export Switch from './Switch/Switch';
+export ChipContact from './Chip/ChipContact';
 export Chip from './Chip/Chip';
 export Button from './Button/Button';
 export Card from './Card/Card';
