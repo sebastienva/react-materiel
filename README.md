@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/sebastienva/materiel.svg?branch=master)](https://travis-ci.org/sebastienva/materiel)
-[![Coverage Status](https://coveralls.io/repos/github/sebastienva/materiale/badge.svg?branch=master)](https://coveralls.io/github/sebastienva/materiel?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/sebastienva/materiel/badge.svg?branch=master)](https://coveralls.io/github/sebastienva/materiel?branch=master)
 
 Material implementation based on the css part of https://github.com/google/material-design-lite
 
