@@ -35,6 +35,12 @@ class Button extends Component {
   };
 
   props: Props;
+  button: any;
+
+  // force to loose focus (special style)
+  forceBlur = () => {
+    this.button.blur();
+  }
 
   render() {
     const buttonClasses: string = classNames({
@@ -51,7 +57,13 @@ class Button extends Component {
     }
 
     return (
-      <button className={`${this.props.className} ${buttonClasses}`} disabled={this.props.disabled} onClick={this.props.onClick}>
+      <button
+        className={`${this.props.className} ${buttonClasses}`}
+        disabled={this.props.disabled}
+        onMouseUp={this.forceBlur}
+        onMouseLeave={this.forceBlur}
+        ref={(button) => { this.button = button; }}
+      >
         {this.props.children}{ink}
       </button>
     );
