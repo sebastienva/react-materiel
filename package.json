@@ -73,7 +73,6 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "material-design-lite": "^1.2.0",
-    "materialize-css": "^0.97.6",
     "react-ink": "^5.1.1",
     "react-onclickoutside": "^5.3.1",
     "react-router": "^2.4.1"
