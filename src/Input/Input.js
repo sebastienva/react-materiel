@@ -33,7 +33,7 @@ type State = {
 
   Usage :
 ```html
-  <input type="text" value={value} onChange={onChange} />
+  <Input type="text" value={value} onChange={onChange} />
 ```
 */
 class Input extends Component {
@@ -81,12 +81,6 @@ class Input extends Component {
     }
   }
 
-  handleClick = () => {
-    this.input.focus();
-    // focus event not triggered by tests (and possibly some browsers ?)
-    this.handleFocus();
-  }
-
   render() {
     const {
       float,
@@ -130,7 +124,6 @@ class Input extends Component {
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          ref={(ref) => { this.input = ref; }}
           {...other}
         />
         <label className="mdl-textfield__label">{label}</label>
