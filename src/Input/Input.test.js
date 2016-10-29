@@ -14,32 +14,25 @@ describe('<Input/>', function () {
 
     // check "floating" on focus
     wrapper.find('input').simulate('focus');
-    expect(wrapper.find('label').hasClass('active')).to.be.true;
+    expect(wrapper.find('.mdl-textfield').hasClass('is-focused')).to.be.true;
 
     // still floating on blur when the value is not empty
     wrapper.setProps({ value: 'test' });
     wrapper.find('input').simulate('blur');
-    expect(wrapper.find('label').hasClass('active')).to.be.true;
+    expect(wrapper.find('.mdl-textfield').hasClass('is-dirty')).to.be.true;
 
     // stop floating on blur when the value is empty
     wrapper.find('input').simulate('focus');
     wrapper.setProps({value: ''});
     wrapper.find('input').simulate('blur');
-    expect(wrapper.find('label').hasClass('active')).to.be.false;
-  });
-
-  it('should be clickable', () => {
-    // mount to test ref
-    const wrapper = mount(<Input label="bla" float value="" />);
-    wrapper.find('label').simulate('click');
-    expect(wrapper.find('label').hasClass('active')).to.be.true;
+    expect(wrapper.find('.mdl-textfield').hasClass('is-focused')).to.be.false;
   });
 
   it('should have a placeholder', () => {
     const wrapper = shallow(<Input label="bla" value="" />);
 
-    expect(wrapper.find('label').length).to.equal(0);
-    expect(wrapper.find('input').prop('placeholder')).to.equal('bla');
+    expect(wrapper.find('label').text()).to.equal('bla');
+    expect(wrapper.find('.mdl-textfield').hasClass('mdl-textfield--floating-label')).to.be.false;
   });
 
   it('should return value on onChange', (done) => {
@@ -75,7 +68,7 @@ describe('<Input/>', function () {
   it('should have a character counter', () => {
     const wrapper = shallow(<Input label="bla" length={10} value="test" />);
 
-    expect(wrapper.find('.character-counter').text()).to.equal('4 / 10');
+    expect(wrapper.find('.mdl-textfield__counter').text()).to.equal('4 / 10');
   });
 
   it('should pass down undefined props', () => {
