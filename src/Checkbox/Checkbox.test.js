@@ -1,32 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
-import sinon from 'sinon';
 
 import Checkbox from './Checkbox';
 
 describe('<Checkbox/>', function () {
   it('should render a checked checkbox', () => {
     const wrapper = shallow(<Checkbox checked />);
-    expect(wrapper.find('input').prop('checked')).to.be.true;
+    expect(wrapper.find('input').prop('checked')).toBe(true);
+    expect(wrapper.find('.mdl-checkbox').hasClass('is-checked')).toBe(true);
   });
 
-  it('should render a filled checkbox', () => {
-    const wrapper = shallow(<Checkbox filled />);
-    expect(wrapper.find('input').hasClass('filled-in')).to.be.true;
-  });
 
   it('should call onChange callback', () => {
 
-    const handleChange = sinon.spy()
+    const handleChange = jest.fn()
     const wrapper = shallow(
       <Checkbox checked onChange={(checked) => {
-        expect(checked).to.be.false;
+        expect(checked).toBe(false);
         handleChange();
       }} />
     );
 
-    wrapper.simulate('click');
-    expect(handleChange.calledOnce).to.be.true;
+    wrapper.find('.mdl-checkbox__input').simulate('change');
+    expect(handleChange).toHaveBeenCalled();
   });
 });

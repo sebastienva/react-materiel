@@ -12,8 +12,6 @@ type Props = {
   label: string,
   /** Disabled if true */
   disabled: boolean,
-  /** Filled appearence if true */
-  filled: boolean,
   /** Disable ink effect if true */
   noInk: boolean,
 }
@@ -26,7 +24,6 @@ class Checkbox extends Component {
   static defaultProps = {
     label: '',
     disabled: false,
-    filled: false,
     noInk: false,
     checked: false,
   };
