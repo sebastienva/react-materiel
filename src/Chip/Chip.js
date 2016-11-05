@@ -26,7 +26,7 @@ class Chip extends Component {
     let closeIcon = '';
     if (this.props.onClose) {
       closeIcon = (
-        <a href="#" className="mdl-chip__action"><i className="material-icons">cancel</i></a>
+        <a href="#" onClick={this.handleCloseClick} className="mdl-chip__action"><i className="material-icons">cancel</i></a>
       );
     }
 
