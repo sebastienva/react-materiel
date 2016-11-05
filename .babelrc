@@ -1,9 +1,4 @@
 {
   "presets": ["es2015", "stage-0", "react"],
-  "plugins": ["flow-react-proptypes", "transform-flow-strip-types"],
-  "env": {
-    "test": {
-      "plugins": [ "istanbul" ]
-    }
-  }
+  "plugins": ["flow-react-proptypes", "transform-flow-strip-types"]
 }
