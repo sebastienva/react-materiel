@@ -35,7 +35,7 @@ class Card extends Component {
         </div>
         <div className="mdl-card__actions mdl-card--border">
           <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Get Started
+            Ok
           </a>
         </div>
         <div className="mdl-card__menu">
