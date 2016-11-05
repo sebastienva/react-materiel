@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { expect } from 'chai';
 
 import Select from './Select';
 
@@ -9,40 +8,38 @@ describe('<Select/>', function () {
     const wrapper = mount(<Select label="Select label"><option value="1">Test</option></Select>);
 
     // check label
-    expect(wrapper.find('label').text()).to.equal('Select label');
+    expect(wrapper.find('label').text()).toEqual('Select label');
   });
 
-  it('should render options', (done) => {
+  it('should render options', () => {
     const wrapper = mount(
       <Select label="Select label">
         <option value="1">Test</option>
         <option value="2">Test 2</option>
       </Select>
     );
+
     // check options values
-    expect(wrapper.find('li').length).to.equal(2);
-    expect(wrapper.find('li').at(0).text()).to.equal('Test');
-    expect(wrapper.find('li').at(1).text()).to.equal('Test 2');
+    expect(wrapper.find('li').length).toEqual(2);
+    expect(wrapper.find('li').at(0).text()).toEqual('Test');
+    expect(wrapper.find('li').at(1).text()).toEqual('Test 2');
 
     // check option "show"
-    wrapper.find('.select-wrapper').simulate('focus');
-    expect(wrapper.find('ul').hasClass('active')).to.be.true;
+    wrapper.find('.mdl-textfield').simulate('click');
+    expect(wrapper.find('.mdl-menu__container').hasClass('is-visible')).toEqual(true);
 
     // check option "hide"
-    wrapper.find('.select-wrapper').simulate('keyDown', { keyCode: 9 });
-    expect(wrapper.find('ul').hasClass('hideAnimation')).to.be.true;
-    setTimeout(() => {
-      expect(wrapper.find('ul').hasClass('active')).to.be.false;
-      done();
-    }, 300); // wait "animation" delay
+    wrapper.find('.mdl-textfield').simulate('keyDown', { keyCode: 9 });
+
+    expect(wrapper.find('.mdl-menu__container').hasClass('is-visible')).toEqual(false);
   });
 
-  it('option should be selectable', () => {
+  it('option should be selectable', (done) => {
     const wrapper = mount(
       <Select
         label="Select label"
         onChange={(value) => {
-          expect(value).to.equal(2);
+          expect(value).toEqual(2);
         }}
       >
         <option value={1}>Test</option>
@@ -51,11 +48,17 @@ describe('<Select/>', function () {
     );
 
     // check option "show"
-    wrapper.find('.select-wrapper').simulate('focus');
-    expect(wrapper.find('ul').hasClass('active')).to.be.true;
+    wrapper.find('.mdl-textfield').simulate('focus');
+    expect(wrapper.find('.mdl-textfield').hasClass('is-focused')).toEqual(true);
 
     wrapper.find('li').at(1).simulate('click');
+
+    setTimeout(() => {
+      expect(wrapper.find('.mdl-menu__container').hasClass('is-visible')).toEqual(false);
+      done();
+    }, 300); // wait "animation" delay
   });
+
 
   it('should render "default" value', () => {
     const wrapper = mount(
@@ -64,8 +67,8 @@ describe('<Select/>', function () {
       </Select>
     );
 
-    expect(wrapper.find('label').hasClass('active')).to.be.true;
-    expect(wrapper.find('.preview-item').text()).to.equal('Value 1');
+    expect(wrapper.find('.mdl-textfield').hasClass('is-dirty')).toEqual(true);
+    expect(wrapper.find('.mdl-menu__preview').text()).toContain('Value 1');
   });
 
   it('should render a "preview" value', () => {
@@ -75,8 +78,8 @@ describe('<Select/>', function () {
       </Select>
     );
 
-    expect(wrapper.find('label').hasClass('active')).to.be.true;
-    expect(wrapper.find('.preview-item').text()).to.equal('test 1');
+    expect(wrapper.find('.mdl-textfield').hasClass('is-dirty')).toEqual(true);
+    expect(wrapper.find('.mdl-menu__preview').text()).toContain('test 1');
   });
 
   it('should render a group', () => {
@@ -88,44 +91,46 @@ describe('<Select/>', function () {
       </Select>
     );
 
-    expect(wrapper.find('li').length).to.equal(2);
-    expect(wrapper.find('li').at(0).hasClass('optgroup')).to.be.true;
-    expect(wrapper.find('li').at(0).text()).to.equal('Group 1');
-    expect(wrapper.find('li').at(1).text()).to.equal('Value 1');
+    expect(wrapper.find('li').length).toEqual(2);
+    expect(wrapper.find('li').at(0).hasClass('mdl-menu__group')).toBe(true);
+    expect(wrapper.find('li').at(0).text()).toEqual('Group 1');
+    expect(wrapper.find('li').at(1).text()).toEqual('Value 1');
   });
 
-  it('should render multiple options', () => {
+  it('should render multiple options', (done) => {
     const wrapper = mount(
       <Select label="Select label" multiple value={[]} onChange={(value) => {
-        expect(value).to.deep.equal([2]);
+        expect(value).toEqual([2]);
+        done();
       }}>
         <option value={1}>Value 1</option>
         <option value={2}>Value 2</option>
       </Select>
     );
 
-    wrapper.find('.select-wrapper').simulate('focus');
+    wrapper.find('.mdl-textfield').simulate('focus');
     wrapper.find('li').at(1).simulate('click');
   });
 
+  it('should render default multiple value', (done) => {
+     const wrapper = mount(
+       <Select
+         label="Select label"
+         multiple value={[1, 2]}
+         onChange={(value) => {
+           expect(value).toEqual([2]);
+           done();
+         }}>
+         <option value={1}>Value 1</option>
+         <option value={2}>Value 2</option>
+       </Select>
+     );
 
-    it('should render default multiple value', () => {
-      const wrapper = mount(
-        <Select
-          label="Select label"
-          multiple value={[1, 2]}
-          onChange={(value) => {
-            expect(value).to.deep.equal([2]);
-          }}>
-          <option value={1}>Value 1</option>
-          <option value={2}>Value 2</option>
-        </Select>
-      );
+     expect(wrapper.find('li').at(0).hasClass('is-selected')).toBe(true);
+     expect(wrapper.find('li').at(1).hasClass('is-selected')).toBe(true);
 
-      expect(wrapper.find('li').at(0).hasClass('active')).to.be.true;
-      expect(wrapper.find('li').at(1).hasClass('active')).to.be.true;
+     // unselect value
+     wrapper.find('li').at(0).simulate('click');
+   });
 
-      // unselect value
-      wrapper.find('li').at(0).simulate('click');
-    });
 });

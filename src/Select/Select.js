@@ -62,6 +62,7 @@ export class Select extends Component {
   }
 
   componentDidMount() {
+    // todo : check if there is an other way ? (irule react/no-did-mount-set-state)
     this.setState({
       menuHeight: this.menu.offsetHeight,
       menuWidth: this.preview.offsetWidth,
@@ -184,7 +185,7 @@ export class Select extends Component {
 
     // final render
     return (
-      <div onClick={this.handleFocus}>
+      <div>
         <div className={wrapperClasses}>
           <div
             className="mdl-menu__outline mdl-menu__outline-standard"
@@ -192,15 +193,23 @@ export class Select extends Component {
           ></div>
           <ul
             className="mdl-menu"
-            style={{ clip: 'auto', width: this.state.menuWidth }}
+            style={{ clip: 'auto', width: this.state.menuWidth }} // todo : classe
             ref={(ref) => { this.menu = ref; }}
           >
           {options}
           </ul>
         </div>
-        <div className={previewClasses} style={{ cursor: 'pointer' }} ref={(ref) => { this.preview = ref; }}>
+        <div
+          className={previewClasses}
+          style={{ cursor: 'pointer', outline: 'none' }}
+          ref={(ref) => { this.preview = ref; }}
+          onClick={this.handleFocus}
+          onKeyDown={this.handleKeyDown}
+          tabIndex={this.props.tabIndex}
+          onFocus={this.handleFocus}
+        >
           <i className="material-icons" style={{ float: 'right' }}>arrow_drop_down</i>
-          <span className="mdl-textfield__input mdl-menu__preview">
+          <span className="mdl-textfield__input mdl-menu__preview test">
             {preview.map((item) =>
               <span key={item}>{item}</span>
             )}
