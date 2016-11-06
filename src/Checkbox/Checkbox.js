@@ -32,7 +32,7 @@ class Checkbox extends Component {
 
   handleChange = (e: any) => {
     if (this.props.onChange) {
-      this.props.onChange(!this.props.checked, e);
+      this.props.onChange(e.target.checked, e);
     }
   }
 

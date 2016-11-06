@@ -21,7 +21,7 @@ describe('<Checkbox/>', function () {
       }} />
     );
 
-    wrapper.find('.mdl-checkbox__input').simulate('change');
+    wrapper.find('input').simulate('change', { target: { checked: false } });
     expect(handleChange).toHaveBeenCalled();
   });
 });
