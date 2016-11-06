@@ -8,7 +8,7 @@
     "dev": "cd demo && npm run dev",
     "lint": "eslint src",
     "test": "jest",
-    "coveralls": "jets --coverage | coveralls",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "doc": "./node_modules/.bin/react-docgen src/ | ./doc/buildDocs.sh",
     "postinstall": "cd demo && npm install && npm run build"
   },
