@@ -8,6 +8,9 @@
       allowArrowFunctions: true,
       allowBind: true,
     }],
-    "react/sort-comp": [0]
+    "react/sort-comp": [0],
+  },
+  "env": {
+    "jest": true
   }
 }
