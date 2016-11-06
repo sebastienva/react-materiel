@@ -22,7 +22,7 @@ class CircularPreloader extends Component {
     let spinners = [];
     for (let i = 1; i <= 4; i++) {
       spinners.push(
-        <div className={`mdl-spinner__layer mdl-spinner__layer-${i}`}>
+        <div key={i} className={`mdl-spinner__layer mdl-spinner__layer-${i}`}>
           <div className="mdl-spinner__circle-clipper mdl-spinner__left">
             <div className="mdl-spinner__circle"></div>
           </div>
