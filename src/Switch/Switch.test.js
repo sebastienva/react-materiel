@@ -1,13 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
 
 import Switch from './Switch';
 
-describe('<Switch/>', function () {
+describe('<Switch/>', () => {
   it('should render a switch', () => {
-    const wrapper = shallow(<Switch value={true}/>);
-    expect(wrapper.find('input').prop('type')).to.equal('checkbox');
+    const wrapper = shallow(<Switch checked />);
+    expect(wrapper.find('.mdl-switch').hasClass('is-checked')).toBe(true);
   });
 
   it('should be checkable', (done) => {
@@ -15,7 +14,7 @@ describe('<Switch/>', function () {
       <Switch
         checked={false}
         onChange={(value) => {
-          expect(value).to.equal(true);
+          expect(value).toEqual(true);
           done();
         }}
       />
@@ -29,7 +28,7 @@ describe('<Switch/>', function () {
       <Switch
         checked
         onChange={(value) => {
-          expect(value).to.equal(null);
+          expect(value).toEqual(false);
           done();
         }}
       />
@@ -37,5 +36,4 @@ describe('<Switch/>', function () {
 
     wrapper.find('input').simulate('change', { target: { checked: false } });
   });
-
 });

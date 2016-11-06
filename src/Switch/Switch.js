@@ -31,19 +31,21 @@ class Switch extends Component {
 
   handleChange = (e: any) => {
     if (this.props.onChange) {
-      this.props.onChange(!this.props.checked, e);
+      this.props.onChange(e.target.checked, e);
     }
   }
 
   render() {
     const switchClasses = classNames({
       'mdl-switch': true,
+      'is-upgraded': true,
       'is-checked': this.props.checked,
     });
 
     return (
       <div>
-        <label className={switchClasses} onClick={this.handleChange}>
+        <label className={switchClasses} >
+          <input type="checkbox" id="switch-1" className="mdl-switch__input" checked={this.props.checked} onChange={this.handleChange}/>
           <span className="mdl-switch__label"></span>
           <div className="mdl-switch__track"></div>
           <div className="mdl-switch__thumb">
