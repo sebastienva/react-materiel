@@ -63,8 +63,8 @@ class AutocompleteDemo extends Component {
     return (
       <div>
         <h3>Autocomplete</h3>
-        <div className="row">
-          <div className="input-field col s6">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6-col">
             <Autocomplete
               label="Autocomplete"
               value={this.state.auto}
@@ -74,7 +74,7 @@ class AutocompleteDemo extends Component {
             >
               {this.state.options.map(option =>
                 (<option key={option.id} value={option.id} preview={option.full_name}>
-                  <img src={option.owner.avatar_url} alt="" />
+
                   <strong>{option.full_name}</strong><br />
                   <small>{option.description}</small>
                 </option>)
@@ -83,8 +83,8 @@ class AutocompleteDemo extends Component {
           </div>
         </div>
 
-        <div className="row">
-          <div className="input-field col s6">
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--6-col">
             <Autocomplete
               label="State"
               value={this.state.state}

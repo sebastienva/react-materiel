@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 
-import Option from '../Option/Option';
+import AutocompleteOption from './AutocompleteOption';
 import Input from '../Input/Input';
 
-import CircularPreloader from '../CircularPreloader/CircularPreloader';
+import LinearPreloader from '../LinearPreloader/LinearPreloader';
 
 type Props = {
   /** `option` elements */
@@ -80,7 +80,6 @@ class Autocomplete extends Component {
   }
 
   handleOptionSelected = (value: any, text: string) => {
-    this.props.onChange(value, text);
     this.setState({ search: text });
     this.handleClickOutside();
   }
@@ -94,14 +93,12 @@ class Autocomplete extends Component {
     this.setState({ search: '' });
     this.props.onChange(null, null);
     this.props.onSearch('');
-
-    this.input.input.focus();
   }
 
   render() {
     const dropDownContentClasses: string = classNames({
-      'dropdown-content select-dropdown multiple-select-dropdown': true,
-      active: this.state.active && this.props.value === null,
+      'mdl-autocomplete__dropdown': true,
+      active: this.state.active,
     });
 
     let closeIcon = '';
@@ -114,25 +111,25 @@ class Autocomplete extends Component {
       </div>);
     }
 
-    let loading = '';
+    let loader = '';
     if (this.props.isLoading) {
-      loading = <span className="loader"><CircularPreloader /></span>;
+      loader = <span className="mdl-autocomplete__loader"><LinearPreloader /></span>;
     }
 
     let options = React.Children.map(this.props.children, (child) =>
-      <Option
+      <AutocompleteOption
         key={child.key || options.length}
         value={child.props.value}
         onSelect={this.handleOptionSelected}
         preview={child.props.preview}
       >
         {child.props.children}
-      </Option>
+      </AutocompleteOption>
     );
 
     // final render
     return (
-      <div className="select-wrapper autocomplete">
+      <div className="mdl-autocomplete__container">
         <Input
           label={this.props.label}
           value={this.state.search}
@@ -142,10 +139,10 @@ class Autocomplete extends Component {
           onKeyDown={this.handleKeyDown}
           ref={(ref) => { this.input = ref; }}
         />
-        {loading} {closeIcon}
         <ul className={dropDownContentClasses}>
           {options}
         </ul>
+        {loader}
       </div>
     );
   }
