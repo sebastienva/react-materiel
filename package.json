@@ -10,7 +10,8 @@
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "doc": "./node_modules/.bin/react-docgen src/ | ./doc/buildDocs.sh",
-    "postinstall": "cd demo && npm install && npm run build"
+    "postinstall": "cd demo && npm install && npm run build",
+    "demo": "cd demo && npm run build && npm start"
   },
   "repository": {
     "type": "git",
