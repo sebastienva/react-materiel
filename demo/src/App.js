@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Ink from 'react-ink';
+import classNames from 'classnames';
 
 if (process.browser) {
   require('../../scss/main.scss');
@@ -9,7 +10,6 @@ if (process.browser) {
 export default class App extends Component {
 
   static COMPONENTS = [
-    'Home',
     'Input',
     'Select',
     'Autocomplete',
@@ -24,27 +24,45 @@ export default class App extends Component {
     'Dropdown',
   ];
 
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      active: false,
+    };
+  }
+
+  onMenuClick = () => {
+    this.setState({ active: !this.state.active });
+  }
+
   render() {
     let path = this.props.location.pathname.replace('/', '');
     path = path.charAt(0).toUpperCase() + path.slice(1);
 
+    let menuClasses = classNames({
+      'rm-menu': true,
+      'is-active': this.state.active,
+    });
+
     return (
-      <div className="mdl-layout__container">
-      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header has-drawer is-upgraded">
-        <div className="mdl-layout__drawer">
-          <nav className="mdl-navigation">
-            {App.COMPONENTS.map((component) =>
-              <Link key={component.toLowerCase()} to={component.toLowerCase()} className="mdl-navigation__link" activeClassName="is-active">
-              <Ink />{component}
-              </Link>
-            )}
-          </nav>
+      <div>
+        <div className="rm-header">
+          <div className="rm-header__menu-links" onClick={this.onMenuClick}><span className="material-icons">menu</span></div>
+          <div className="rm-header__logo">R</div>eact <div className="rm-header__logo">m</div>ateriel
         </div>
-        <main className="mdl-layout__content">
+
+        <div className={menuClasses}>
+          {App.COMPONENTS.map((component) =>
+            <Link key={component.toLowerCase()} to={component.toLowerCase()} className="rm-menu__link" activeClassName="is-active">
+              <Ink />{component}
+            </Link>
+          )}
+        </div>
+
+        <main className="rm-content">
             {this.props.children}
         </main>
-        <div className="mdl-layout__obfuscator"></div>
-      </div>
       </div>
     );
   }
