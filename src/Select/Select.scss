@@ -1,3 +1,4 @@
+
 .mdl-menu__outline {
   width: 100%;
   height: 100%;
@@ -8,8 +9,12 @@
   transition: opacity 0.3s;
 }
 
-.mdl-menu__container.is-visible .mdl-menu {
+.mdl-menu__container .mdl-menu {
   height: 243px;
+  overflow-y: hidden;
+}
+
+.mdl-menu__container.is-visible .mdl-menu {
   overflow-y: auto;
 }
 
