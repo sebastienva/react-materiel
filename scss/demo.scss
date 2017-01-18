@@ -3,10 +3,10 @@ main {
 }
 
 .rm-header {
-  font-size: 20px;
+  font-size: 16px;
   padding: 15px;
-  font-weight: 300;
-  background-color: $mainColor;
+  font-weight: 400;
+  background-color: unquote("rgb(#{$color-primary})");
   color: #fff;
   text-transform: uppercase;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
@@ -17,11 +17,11 @@ main {
 .rm-header__logo {
   display: inline-block;
   text-align: center;
-  padding: 3px;
+  padding: 1px;
   margin: 2px;
-  border-radius: 4px;
-  font-size: 24px;
-  font-weight: 400;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 500;
   border: 1px solid;
 }
 
@@ -73,9 +73,21 @@ main {
 
 .rm-content {
   float: left;
-  width: calc(100% - 290px);
-  padding: 10px 20px;
+  width: calc(100% - 320px);
+  padding: 10px 40px;
   height: calc(100vh - 90px);
   overflow-y: auto;
   background-color: #fcfcfc;
+}
+
+.rm-title {
+  margin-top: 20px;
+  border-bottom: 2px solid #ccc;
+  font-size: 30px;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.rm-title__actions {
+  float: right;
 }
