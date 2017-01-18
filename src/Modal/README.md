@@ -1,7 +1,4 @@
-`Modal`
-=======
-
-todo
+Component based on native dialog
 
 Props
 -----

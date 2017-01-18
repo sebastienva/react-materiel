@@ -1,6 +1,3 @@
-`Card`
-======
-
 todo
 
 Props

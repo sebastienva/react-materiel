@@ -1,6 +1,3 @@
-`Option`
-========
-
 For internal use.
 
 Props

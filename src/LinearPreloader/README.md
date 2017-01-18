@@ -1,6 +1,3 @@
-`LinearPreloader`
-=================
-
 todo
 
 Props
@@ -8,4 +5,5 @@ Props
 
 Name | Type | Required | Default | Description
 -----|------|----------|---------|------------
-progress|number|No|null|Progress percentage of the bar
+buffer|number|No||Buffer percentage
+progress|number|No||Progress percentage

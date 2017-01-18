@@ -1,6 +1,3 @@
-`Switch`
-========
-
 Similar to a [standard checkbox](http://www.w3schools.com/tags/att_input_checked.asp).
 
 Props
