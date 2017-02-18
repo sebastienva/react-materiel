@@ -102,7 +102,7 @@ class Input extends Component {
       'is-dirty': value !== '',
       'is-disabled': this.props.disabled,
       'is-invalid': error != null,
-    })
+    });
 
     let characterCounter = '';
     if (length) {

@@ -6,7 +6,11 @@
 }
 
 .mdl-menu__outline-standard {
-  transition: opacity 0.3s;
+  transition: opacity 0.4s;
+}
+
+.mdl-menu__container {
+  margin-top: 12px;
 }
 
 .mdl-menu__container .mdl-menu {

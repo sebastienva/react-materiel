@@ -62,7 +62,6 @@ class AutocompleteDemo extends Component {
   render() {
     return (
       <div>
-        <h3>Autocomplete</h3>
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--6-col">
             <Autocomplete

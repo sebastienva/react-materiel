@@ -19,7 +19,6 @@ const routes = {
   component: App,
   childRoutes: [
     { path: '/', component: Home },
-    { path: 'home', component: Home },
     { path: '/input', component: InputDemo },
     { path: '/select', component: SelectDemo },
     { path: '/autocomplete', component: AutocompleteDemo },

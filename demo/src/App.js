@@ -26,23 +26,26 @@ export default class App extends Component {
 
   constructor(props: any) {
     super(props);
-
     this.state = {
-      active: false,
+      menuActive: this.getPath() !== '',
     };
   }
 
   onMenuClick = () => {
-    this.setState({ active: !this.state.active });
+    this.setState({ menuActive: !this.state.menuActive });
+  }
+
+  getPath() {
+    const path = this.props.location.pathname.replace('/', '');
+    return path.charAt(0).toUpperCase() + path.slice(1);
   }
 
   render() {
-    let path = this.props.location.pathname.replace('/', '');
-    path = path.charAt(0).toUpperCase() + path.slice(1);
+    const path = this.getPath();
 
     let menuClasses = classNames({
       'rm-menu': true,
-      'is-active': this.state.active,
+      'is-active': this.state.menuActive,
     });
 
     return (
@@ -50,9 +53,16 @@ export default class App extends Component {
         <div className="rm-header">
           <div className="rm-header__menu-links" onClick={this.onMenuClick}><span className="material-icons">menu</span></div>
           <div className="rm-header__logo">R</div>eact <div className="rm-header__logo">m</div>ateriel
+            {path !== '' &&
+              <span className="rm-header__title"> <i className="material-icons">chevron_right</i> {path}</span>
+            }
         </div>
 
         <div className={menuClasses}>
+          <Link to="" className="rm-menu__link" activeClassName="is-active">
+            <Ink />Home
+          </Link>
+          <div className="rm-menu__section">Components</div>
           {App.COMPONENTS.map((component) =>
             <Link key={component.toLowerCase()} to={component.toLowerCase()} className="rm-menu__link" activeClassName="is-active">
               <Ink />{component}
@@ -61,7 +71,7 @@ export default class App extends Component {
         </div>
 
         <main className="rm-content">
-            {this.props.children}
+          {this.props.children}
         </main>
       </div>
     );
