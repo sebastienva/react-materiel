@@ -8,11 +8,6 @@ function stringOfLength(string, length) {
   return newString;
 }
 
-function generateTitle(name) {
-  var title = '`' + name + '`';
-  return title + '\n' + stringOfLength('=', title.length) + '\n';
-}
-
 function generateDesciption(description) {
   return description + '\n';
 }
@@ -59,7 +54,9 @@ function generateProps(props) {
     Object.keys(props).sort().map(function(propName) {
       //return generateProp(propName, props[propName]);
       var data = props[propName];
-
+      if(!data.flowType) {
+        return;
+      }
       var type = data.flowType.type;
       if(type == null) {
         type = data.flowType.name;
@@ -80,8 +77,8 @@ function generateProps(props) {
 }
 
 function generateMarkdown(name, reactAPI) {
+
   var markdownString =
-    generateTitle(name) + '\n' +
     generateDesciption(reactAPI.description) + '\n' +
     generateProps(reactAPI.props);
 
