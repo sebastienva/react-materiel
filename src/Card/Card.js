@@ -14,7 +14,7 @@ type Props = {
 }
 
 /**
-  todo
+  Display a basic card WIP
 */
 class Card extends Component {
 

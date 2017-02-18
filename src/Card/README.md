@@ -1,4 +1,4 @@
-todo
+Display a basic card WIP
 
 Props
 -----
