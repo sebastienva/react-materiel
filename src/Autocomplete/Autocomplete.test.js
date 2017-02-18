@@ -3,10 +3,12 @@ import { mount } from 'enzyme';
 
 import Autocomplete from './Autocomplete';
 
-describe('<Autocomplete/>', function () {
+describe('<Autocomplete/>', () => {
   it('should render options', () => {
-
-    let options = [{id: 1, name: 'name 1'}, {id: 2, name: 'name 2'}];
+    const options = [
+      { id: 1, name: 'name 1' },
+      { id: 2, name: 'name 2' },
+    ];
 
     const wrapper = mount(
       <Autocomplete label="auto" onSearch={() => {}}>
@@ -17,5 +19,7 @@ describe('<Autocomplete/>', function () {
         )}
       </Autocomplete>
     );
+
+    expect(wrapper.text()).toEqual('name 1 name2');
   });
 });
