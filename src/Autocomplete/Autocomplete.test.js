@@ -20,6 +20,6 @@ describe('<Autocomplete/>', () => {
       </Autocomplete>
     );
 
-    expect(wrapper.text()).toEqual('name 1 name2');
+    expect(wrapper.text()).toEqual('autoname 1name 2');
   });
 });

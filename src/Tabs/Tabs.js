@@ -1,8 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 
-require('./Tabs.scss');
-
 type State = {
   activeTab: number,
 };
