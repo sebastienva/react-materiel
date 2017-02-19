@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 
 import { Card, Tabs, Tab } from '../../../src';
-import Markdown from 'react-remarkable';
-import input from 'raw-loader!../../../src/Card/README.md';
 
 class CardDemo extends Component {
 
@@ -20,7 +18,7 @@ class CardDemo extends Component {
           </Card>
         </Tab>
         <Tab label="Documentation">
-          <Markdown source={input} />
+          wip
         </Tab>
       </Tabs>
     );
