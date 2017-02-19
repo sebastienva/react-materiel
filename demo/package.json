@@ -15,7 +15,7 @@
   "dependencies": {
     "ejs": "^2.5.1",
     "express": "^4.14.0",
-    "markdown-react-js": "^0.3.0"
+    "react-remarkable": "^1.1.1"
   },
   "devDependencies": {
     "css-loader": "^0.24.0",
