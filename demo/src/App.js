@@ -27,7 +27,7 @@ export default class App extends Component {
   constructor(props: any) {
     super(props);
     this.state = {
-      menuActive: this.getPath() !== '',
+      menuActive: true,
     };
   }
 
@@ -52,7 +52,10 @@ export default class App extends Component {
       <div>
         <div className="rm-header">
           <div className="rm-header__menu-links" onClick={this.onMenuClick}><span className="material-icons">menu</span></div>
-          <div className="rm-header__logo">R</div>eact <div className="rm-header__logo">m</div>ateriel
+
+          <Link to="/" className="rm-header__logo">
+            <div className="rm-header__logo-caps">R</div>eact <div className="rm-header__logo-caps">m</div>ateriel
+          </Link>
             {path !== '' &&
               <span className="rm-header__title"> <i className="material-icons">chevron_right</i> {path}</span>
             }

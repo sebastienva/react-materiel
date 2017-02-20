@@ -13,7 +13,7 @@ p {
 
 .rm-header {
   font-size: 16px;
-  padding: 15px;
+  padding: 8px;
   font-weight: 400;
   background-color: unquote("rgb(#{$color-primary})");
   color: #fff;
@@ -24,6 +24,12 @@ p {
 }
 
 .rm-header__logo {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 0px 10px 10px;
+}
+
+.rm-header__logo-caps {
   display: inline-block;
   text-align: center;
   padding: 1px;
@@ -38,8 +44,10 @@ p {
   & .material-icons {
     position: relative;
     top: 6px;
+    line-height: 15px;
   }
 }
+
 .rm-menu {
   position: relative;
   float: left;
@@ -50,7 +58,7 @@ p {
   transition: width .3s;
   box-shadow: 3px 0 6px rgba(0,0,0,0.24);
   z-index: 10;
-  padding-top: 10px;
+  padding-top: 5px;
 
   &.is-active {
     width: 240px;
@@ -66,6 +74,11 @@ p {
     position: relative;
     top: 2px;
     font-size: 30px !important;
+  }
+}
+@media screen and (min-width: 640px) {
+  .rm-header__menu-links {
+    display: none
   }
 }
 
