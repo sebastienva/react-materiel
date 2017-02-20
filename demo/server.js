@@ -1,7 +1,7 @@
 import express from 'express';
 import http from 'http';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 
 import { routes } from './routes';
@@ -24,11 +24,10 @@ app.get('*', (req, res) => {
     } else if (props) {
       // if we got props, that means we found a valid component to render
       // for the given route
-      const markup = renderToString(<RouterContext {...props} />);
+      const markup = renderToStaticMarkup(<RouterContext {...props} />);
 
       // render `index.ejs`, but pass in the markup we want it to display
-      res.render('index', { markup })
-
+      res.render('index', { markup });
     } else {
       // no route match, so 404. In a real app you might render a custom
       // 404 view here
@@ -39,7 +38,7 @@ app.get('*', (req, res) => {
 
 const server = http.createServer(app);
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 server.listen(port);
 server.on('listening', () => {
