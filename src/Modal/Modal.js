@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import onClickOutside from 'react-onclickoutside';
 
-import {Button} from '../Button/Button';
+import Button from '../Button/Button';
 
 type Props = {
   /** Button content */
