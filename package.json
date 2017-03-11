@@ -1,4 +1,4 @@
-  {
+{
   "name": "react-materiel",
   "version": "0.0.8",
   "description": "Material implementation for react based on material-design-lite",
@@ -12,7 +12,8 @@
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "doc": "./node_modules/.bin/react-docgen src/ | ./doc/buildDocs.sh",
     "demo": "cd demo && npm run build && npm start",
-    "npm-build": "babel ./src --out-dir ./build --ignore test.js && npm publish && rm -rf build"
+    "npm-build": "babel ./src --out-dir ./build --ignore test.js && npm publish && rm -rf build",
+    "heroku-postbuild": "cd demo && npm run postinstall"
   },
   "repository": {
     "type": "git",
@@ -70,7 +71,7 @@
     "classnames": "^2.2.5",
     "isomorphic-ensure": "^1.0.1",
     "material-design-lite": "^1.2.0",
-    "react-ink": "^5.1.1",
+    "react-ink": "^6.1.1",
     "react-onclickoutside": "^5.3.1",
     "react-router": "^2.4.1"
   }
