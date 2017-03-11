@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node server.js",
     "build": "webpack --config webpack.prod.config.js",
-    "dev": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000"
+    "dev": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
+    "postinstall": "cd demo && npm install && npm run build",
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,9 @@
   "dependencies": {
     "ejs": "^2.5.1",
     "express": "^4.14.0",
-    "react-remarkable": "^1.1.1"
+    "node-raw": "^0.2.3",
+    "react-remarkable": "^1.1.1",
+    "webpack-isomorphic-tools": "^2.6.6"
   },
   "devDependencies": {
     "css-loader": "^0.24.0",

@@ -1,7 +1,8 @@
-{
-  "name": "materiel",
-  "version": "0.0.1",
-  "description": "coming",
+  {
+  "name": "react-materiel",
+  "version": "0.0.8",
+  "description": "Material implementation for react based on material-design-lite",
+  "main": "./build/index.js",
   "scripts": {
     "start": "cd demo && npm start",
     "build": "webpack",
@@ -10,8 +11,8 @@
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "doc": "./node_modules/.bin/react-docgen src/ | ./doc/buildDocs.sh",
-    "postinstall": "cd demo && npm install && npm run build",
-    "demo": "cd demo && npm run build && npm start"
+    "demo": "cd demo && npm run build && npm start",
+    "npm-build": "babel ./src --out-dir ./build --ignore test.js && npm publish && rm -rf build"
   },
   "repository": {
     "type": "git",
@@ -67,6 +68,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "isomorphic-ensure": "^1.0.1",
     "material-design-lite": "^1.2.0",
     "react-ink": "^5.1.1",
     "react-onclickoutside": "^5.3.1",

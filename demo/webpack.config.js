@@ -10,7 +10,7 @@ module.exports = {
   displayErrorDetails: true,
   stats: {
     colors: true,
-    reasons: true
+    reasons: true,
   },
 
   // our Development Server config
@@ -24,19 +24,25 @@ module.exports = {
    // Config for our build files
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './client'
+    './client',
   ],
+
+  resolve: {
+    alias: {
+      'react-materiel': '../src',
+    },
+  },
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     //new webpack.optimize.DedupePlugin(), todo : check dependencies
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   module: {
     loaders: [
@@ -64,6 +70,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
+      },
+      {
+        test: /\.md$/,
+        loader: 'raw-loader'
       },
       {
         test: /\.scss$/,

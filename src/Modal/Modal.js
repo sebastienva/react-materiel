@@ -1,8 +1,8 @@
 // @flow
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import onClickOutside from 'react-onclickoutside';
 
-import { Button } from '../../src';
+import {Button} from '../Button/Button';
 
 type Props = {
   /** Button content */
@@ -12,17 +12,16 @@ type Props = {
   /** Tells if the modal should be opened or not */
   open: boolean,
   /** Callback fired when the modal is closed */
-  onClose: ?() => void,
-}
+  onClose: ?() => void
+};
 
 /**
   Component based on native dialog
 */
 class Modal extends Component {
-
   static defaultProps = {
     className: '',
-    open: false,
+    open: false
   };
 
   props: Props;
@@ -41,18 +40,21 @@ class Modal extends Component {
     if (this.props.onClose && this.props.open) {
       this.props.onClose();
     }
-  }
-
-  componentWillUpdate = (nextProps) => {
+  };
+  componentWillUpdate = nextProps => {
     if (nextProps.open && !this.props.open) {
       this.dialog.showModal();
     }
-  }
-
+  };
   render() {
     return (
       <div>
-        <dialog className="mdl-dialog" ref={(ref) => { this.dialog = ref; }}>
+        <dialog
+          className="mdl-dialog"
+          ref={ref => {
+            this.dialog = ref;
+          }}
+        >
           <h3 className="mdl-dialog__title">Title</h3>
           <div className="mdl-dialog__content">
             {this.props.children}
