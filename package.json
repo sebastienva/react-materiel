@@ -13,7 +13,7 @@
     "doc": "./node_modules/.bin/react-docgen src/ | ./doc/buildDocs.sh",
     "demo": "cd demo && npm run build && npm start",
     "npm-build": "babel ./src --out-dir ./build --ignore test.js && npm publish && rm -rf build",
-    "heroku-postbuild": "cd demo && npm run postinstall"
+    "heroku-postbuild": "cd demo && npm install && npm build"
   },
   "repository": {
     "type": "git",
